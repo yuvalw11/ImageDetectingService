@@ -34,5 +34,24 @@ namespace ServiceGuiComunication
 
             return cfd;
         }
+
+        public static string ConvertToJson(LogData ld)
+        {
+            JObject json = new JObject();
+            json["message"] = ld.Message;
+            json["type"] = ld.Type;
+
+            return json.ToString();
+        }
+
+        public static LogData ConvertToLogData(string json)
+        {
+            JObject jsonObj = JObject.Parse(json);
+            LogData ld = new LogData();
+            ld.Message = (string)jsonObj["message"];
+            ld.Type = (int)jsonObj["type"];
+
+            return ld;
+        }
     }
 }
