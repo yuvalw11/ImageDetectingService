@@ -1,0 +1,9 @@
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\ServiceGuiComunication.dll
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\ServiceGuiComunication.pdb
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\Newtonsoft.Json.dll
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\Newtonsoft.Json.xml
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.csprojResolveAssemblyReference.cache
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.csproj.CoreCompileInputs.cache
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.csproj.CopyComplete
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.dll
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.pdb
