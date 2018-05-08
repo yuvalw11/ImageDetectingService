@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using ImageService.Controller.Handlers;
+using ImageService.ImageService.Infrastructure;
 
 namespace ImageService.Server
 {
@@ -32,7 +33,7 @@ namespace ImageService.Server
             this.m_logging = logging;
             this.m_controller = controller;
             //getting the paths to all directories that need monitoring.
-            string[] paths = ReadSetting("Handlers").Split(';');
+            string[] paths = ReadAppConfig.ReadSetting("Handlers").Split(';');
             for (int i = 0; i < paths.Length; i++)
             {
                 if (!System.IO.Directory.Exists(paths[i]))
@@ -51,20 +52,7 @@ namespace ImageService.Server
                 this.m_logging.Log("created handler that listens to " + paths[i], Logging.Modal.MessageTypeEnum.INFO);
             }
         }
-        //reads the handlers of the directories we want to listen to from app.config
-        static string ReadSetting(string key)
-        {
-            try
-            {
-                string result = ConfigurationManager.ConnectionStrings[key].ConnectionString;
-                return result;
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("Error reading app settings");
-                return "";
-            }
-        }
+        
         //the function closes all the handlers and inform that the server is now closed
         public void  CloseServer()
         {

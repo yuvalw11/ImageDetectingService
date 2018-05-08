@@ -55,3 +55,7 @@ C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\obj\Debug\I
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\obj\Debug\ImageService.csproj.CoreCompileInputs.cache
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\obj\Debug\ImageService.exe
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\obj\Debug\ImageService.pdb
+C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\Newtonsoft.Json.dll
+C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\ServiceGuiComunication.dll
+C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\ServiceGuiComunication.pdb
+C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\obj\Debug\ImageService.csproj.CopyComplete

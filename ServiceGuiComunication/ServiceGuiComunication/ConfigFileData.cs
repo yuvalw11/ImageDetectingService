@@ -11,7 +11,7 @@ namespace ServiceGuiComunication
         public string OutputDir { get; set; }
         public string SourceDir { get; set; }
         public string LogName { get; set; }
-        public string ThumnailSize { get; set; }
+        public int ThumnailSize { get; set; }
         public string[] InputDirs { get; set; }
     }
 }

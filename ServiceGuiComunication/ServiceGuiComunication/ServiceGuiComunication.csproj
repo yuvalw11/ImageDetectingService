@@ -46,6 +46,7 @@
     <Compile Include="ClientHandler.cs" />
     <Compile Include="ConfigFileData.cs" />
     <Compile Include="IClientHandler.cs" />
+    <Compile Include="JsonCommand.cs" />
     <Compile Include="JsonConvertor.cs" />
     <Compile Include="LogData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

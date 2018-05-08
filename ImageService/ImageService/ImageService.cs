@@ -13,7 +13,7 @@ using ImageService.Logging.Modal;
 using ImageService.Server;
 using ImageService.Controller;
 using ImageService.Modal;
-using System.Configuration;
+using ImageService.ImageService.Infrastructure;
 
 namespace ImageService
 {
@@ -56,8 +56,8 @@ namespace ImageService
         public ImageService1(string[] args)
         {
             InitializeComponent();
-            string eventSourceName = readAppSettings("ImageServiceSource");
-            string logName = readAppSettings("ImageServiceLog");
+            string eventSourceName = ReadAppConfig.readAppSettings("ImageServiceSource");
+            string logName = ReadAppConfig.readAppSettings("ImageServiceLog");
             if (args.Count() > 0)
             {
                 eventSourceName = args[0];
@@ -83,8 +83,8 @@ namespace ImageService
             this.ils = new LoggingService();
             //every time the logger receives a message MessageRecieved is invoked and onmsg function in this class is called
             this.ils.MessageRecieved += this.OnMsg;
-            string outputDir = ReadSetting("OutPutDir");
-            int thumbnailSize = ReadThumbnailSize("ThumbnailSize");
+            string outputDir = ReadAppConfig.ReadSetting("OutPutDir");
+            int thumbnailSize = ReadAppConfig.ReadThumbnailSize("ThumbnailSize");
             if (thumbnailSize == -1) //in case of failed conversion to an int
             {
                 thumbnailSize = 120;
@@ -103,54 +103,7 @@ namespace ImageService
 
         }
 
-        //the function takes a key string and returns the value of it from app.config file
-        static string ReadSetting(string key)
-        {
-            try
-            {
-                string result = ConfigurationManager.ConnectionStrings[key].ConnectionString;
-                return result;
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("Error reading app settings");
-                return "";
-            }
-        }
-        //the function takes a key string and returns the size of the thumbnail
-        static int ReadThumbnailSize(string key)
-        {
-            try
-            {
-                int result = Int32.Parse(ConfigurationManager.AppSettings[key]);
-                //if given size is negative, will turn in to positive
-                if (result < 0)
-                {
-                    result = -result;
-                }
-                return result;
-            }
-            //catch if failed to convert from string to int
-            catch (FormatException)
-            {
-                return -1;
-            }
-        }
-
-        //the function takes a key string and return the source or the log (depends on the sent key)
-        static string readAppSettings(string key)
-        {
-            try
-            {
-                string result = ConfigurationManager.AppSettings[key];
-                return result;
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("error reading app settings");
-                return "";
-            }
-        }
+        
 
         //executed when the service is being closed
         //the function should send a command to the server to close it and its handlers
