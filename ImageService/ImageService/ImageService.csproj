@@ -39,6 +39,9 @@
     <StartupObject>ImageService.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Infrustructure">
+      <HintPath>..\..\Infrustructure\Infrustructure\bin\Debug\Infrustructure.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="ServiceGuiComunication">
       <HintPath>..\..\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\ServiceGuiComunication.dll</HintPath>
@@ -73,6 +76,7 @@
     <Compile Include="ImageService.Logging\Modal\MessageTypeEnum.cs" />
     <Compile Include="ImageService\Commands\GetConfigCommand.cs" />
     <Compile Include="ImageService\Commands\ICommand.cs" />
+    <Compile Include="ImageService\Commands\RemoveClientCommand.cs" />
     <Compile Include="ImageService\Commands\NewFileCommand.cs" />
     <Compile Include="ImageService\Controller\Handlers\DirectoyHandler.cs" />
     <Compile Include="ImageService\Controller\Handlers\IDirectoryHandler.cs" />

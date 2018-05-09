@@ -7,3 +7,5 @@ C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComu
 C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.csproj.CopyComplete
 C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.dll
 C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\obj\Debug\ServiceGuiComunication.pdb
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\Infrustructure.dll
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\Infrustructure.pdb
