@@ -15,6 +15,7 @@ using ImageService.Controller;
 using ImageService.Modal;
 using ImageService.ImageService.Infrastructure;
 using ImageService.ImageService.Logging;
+using ServiceGuiComunication;
 
 namespace ImageService
 {
@@ -48,6 +49,7 @@ namespace ImageService
         ImageServiceModal modal;
         ImageController controller;
         ImageServer server;
+        ComunicationServer cServer;
 
 
         [DllImport("advapi32.dll", SetLastError = true)]
@@ -100,9 +102,10 @@ namespace ImageService
              this.modal = new ImageServiceModal(outputDir, thumbnailSize);
             eventLog1.WriteEntry("output dir is: " + outputDir);
             //creating the controller and the server.
-            this.controller = new ImageController(modal);
-            this.server = new ImageServer(controller, this.ils);
-
+            this.controller = new ImageController(modal, ils);
+            this.server = new ImageServer(this.controller, this.ils);
+            this.cServer = new ComunicationServer(8000, this.controller);
+            this.cServer.Start();
         }
 
         

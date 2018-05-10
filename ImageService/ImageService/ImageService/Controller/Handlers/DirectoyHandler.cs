@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ImageService.Infrastructure;
-using ImageService.Infrastructure.Enums;
+using Infrustructure;
 using ImageService.Logging;
 using ImageService.Logging.Modal;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Infrustructure;
 
 namespace ImageService.Controller.Handlers
 {
@@ -38,7 +38,7 @@ namespace ImageService.Controller.Handlers
         {
             if (e.RequestDirPath == this.m_path || e.RequestDirPath.Equals("close"))
             {
-                if (e.CommandID == (int)CommandEnum.CloseCommand)
+                if (e.CommandID == (int)CommandsEnum.CloseCommand)
                 this.CloseHandler();
             }
 
@@ -89,7 +89,7 @@ namespace ImageService.Controller.Handlers
                 args[0] = e.FullPath;
                 bool result;
                 this.m_logging.Log("sending command", MessageTypeEnum.INFO);
-                string message = this.m_controller.ExecuteCommand((int)CommandEnum.NewFileCommand, args, out result);
+                string message = this.m_controller.ExecuteCommand((int)CommandsEnum.NewFileCommand, args, out result);
                 if (!result)
                 {
                     //define what to do when an error occurs

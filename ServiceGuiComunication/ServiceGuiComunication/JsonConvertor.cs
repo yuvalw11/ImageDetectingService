@@ -12,8 +12,7 @@ namespace ServiceGuiComunication
         public static JsonCommand GenerateJsonCommandObject(string json)
         {
             JObject jsonObj = JObject.Parse(json);
-            JArray args = new JArray(jsonObj["args"]);
-            JsonCommand jc = new JsonCommand((int)jsonObj["commandID"], args.Select(jv => (string)jv).ToArray(), (bool)jsonObj["result"], (string)jsonObj["jsonData"]);
+            JsonCommand jc = new JsonCommand((int)jsonObj["commandID"], jsonObj["args"].ToObject<string[]>(), (bool)jsonObj["result"], (string)jsonObj["jsonData"]);
 
             return jc;
         }

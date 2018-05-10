@@ -10,7 +10,7 @@ using System.IO;
 
 namespace ServiceGuiComunication
 {
-    class ComunicationServer
+    public class ComunicationServer
     {
         private int port;
         private TcpListener listener;

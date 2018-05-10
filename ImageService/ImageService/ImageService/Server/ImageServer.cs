@@ -1,6 +1,6 @@
 ﻿using ImageService.Controller;
 using ImageService.Controller.Handlers;
-using ImageService.Infrastructure.Enums;
+using Infrustructure;
 using ImageService.Logging;
 using ImageService.Modal;
 using System;
@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using ImageService.Controller.Handlers;
 using ImageService.ImageService.Infrastructure;
+using Infrustructure;
 
 namespace ImageService.Server
 {
@@ -61,7 +62,7 @@ namespace ImageService.Server
             {
                 string[] args = { };
                 //event to close the handlers
-                CommandRecievedEventArgs e = new CommandRecievedEventArgs((int)CommandEnum.CloseCommand, args, "close");
+                CommandRecievedEventArgs e = new CommandRecievedEventArgs((int)CommandsEnum.CloseCommand, args, "close");
                 this.CommandRecieved?.Invoke(handlers[i], e); //invoke the event in order to inforom the handler that it needs to be closed.
             }
             //after closing all the handlers, informs the log that the server is closed

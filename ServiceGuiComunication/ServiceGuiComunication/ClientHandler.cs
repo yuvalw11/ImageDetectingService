@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.IO;
 using Infrustructure;
 
+
 namespace ServiceGuiComunication
 {
     class ClientHandler : IClientHandler
@@ -25,24 +26,26 @@ namespace ServiceGuiComunication
             new Task(() =>
             {
                 NetworkStream stream = client.GetStream();
-                StreamReader reader = new StreamReader(stream);
-                StreamWriter writer = new StreamWriter(stream);
-
-                string commandLine = reader.ReadLine();
+                BinaryReader reader = new BinaryReader(stream);
+                BinaryWriter writer = new BinaryWriter(stream);
+                
+                string commandLine = reader.ReadString();
                 bool result;
                 JsonCommand command = JsonConvertor.GenerateJsonCommandObject(commandLine);
-                if (command.CommandID == (int)CommandsEnum.CloseCommand)
-                {
-                    this.clients.Remove(client);
-                }
-                else
+
+                while (command.CommandID != (int)CommandsEnum.CloseCommand)
                 {
                     string message = this.controller.ExecuteCommand(command.CommandID, command.Args, out result);
                     command.JsonData = message;
                     command.Result = result;
                     writer.Write(JsonConvertor.GenerateJsonCommandString(command));
+
+                    commandLine = reader.ReadString();
+                    command = JsonConvertor.GenerateJsonCommandObject(commandLine);
                 }
+                this.clients.Remove(client);
                 client.Close();
+                
             }).Start();
         }
 

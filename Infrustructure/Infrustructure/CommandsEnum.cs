@@ -11,6 +11,7 @@ namespace Infrustructure
         NewFileCommand,
         GetConfigCommand,
         LogCommand,
+        RemoveClientCommand,
         CloseCommand
     }
 }

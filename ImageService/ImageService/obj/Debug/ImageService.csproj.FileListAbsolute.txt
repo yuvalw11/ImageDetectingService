@@ -61,3 +61,4 @@ C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\S
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\obj\Debug\ImageService.csproj.CopyComplete
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\Infrustructure.dll
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\Infrustructure.pdb
+C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\Newtonsoft.Json.xml

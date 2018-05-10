@@ -6,13 +6,16 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using ServiceGuiComunication;
 
 namespace ServiceGuiComunication
 {
-    class ComunicationClient
+    public class ComunicationClient
     {
         private IPEndPoint ep;
         private TcpClient client;
+
+        public EventHandler<CommandReceivedEventArgs> CommandReceived;
 
         public ComunicationClient(int port)
         {
@@ -20,22 +23,48 @@ namespace ServiceGuiComunication
             this.client = new TcpClient();
         }
 
-        public void startClient()
+        public void ConnectToServer()
         {
+            client.Connect(ep);
 
+            Task task = new Task(() =>
+            {
+                try
+                {
+                    NetworkStream stream = client.GetStream();
+                    BinaryReader reader = new BinaryReader(stream);
+                    BinaryWriter writer = new BinaryWriter(stream);
+                    while (true)
+                    {
+                        string output = reader.ReadString();
+                        this.CommandReceived?.Invoke(this, new CommandReceivedEventArgs(JsonConvertor.GenerateJsonCommandObject(output)));
+                    }
+                }
+                catch(SocketException)
+                {
+
+                }
+            });
+            task.Start();
         }
 
-        public void sendCommand(int commandID, string[] args)
+        public JsonCommand sendCommand(int commandID, string[] args)
         {
             JsonCommand command = new JsonCommand(commandID, args, false, "");
-            client.Connect(ep);
             NetworkStream stream = client.GetStream();
             BinaryReader reader = new BinaryReader(stream);
             BinaryWriter writer = new BinaryWriter(stream);
             writer.Write(JsonConvertor.GenerateJsonCommandString(command));
-            string result = reader.ReadString();
-            command = JsonConvertor.GenerateJsonCommandObject(result);
-            Console.WriteLine(command.JsonData);
+            try
+            {
+                string result = reader.ReadString();
+                command = JsonConvertor.GenerateJsonCommandObject(result);
+                return command;
+            }
+            catch (SocketException)
+            {
+                return null;
+            }
         }
     }
 }
