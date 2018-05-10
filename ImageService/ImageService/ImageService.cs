@@ -14,6 +14,7 @@ using ImageService.Server;
 using ImageService.Controller;
 using ImageService.Modal;
 using ImageService.ImageService.Infrastructure;
+using ImageService.ImageService.Logging;
 
 namespace ImageService
 {
@@ -78,6 +79,7 @@ namespace ImageService
         //this function is called when the service begins.
         protected override void OnStart(string[] args)
         {
+            
             eventLog1.WriteEntry("In OnStart");
             //creating logging service to send messages to the log
             this.ils = new LoggingService();
@@ -123,7 +125,7 @@ namespace ImageService
         private void OnMsg(object sender, MessageRecievedEventArgs e)
         {
             this.eventLog1.WriteEntry(e.Message);
-
+            this.ils.AddMessage(new LogInfo((int)e.Status, e.Message));
         }
 
         private void eventLog1_EntryWritten(object sender, EntryWrittenEventArgs e)

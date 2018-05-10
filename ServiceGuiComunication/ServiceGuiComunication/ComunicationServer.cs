@@ -20,7 +20,8 @@ namespace ServiceGuiComunication
         public ComunicationServer(int port, IImageController controller)
         {
             this.port = port;
-            this.ch = new ClientHandler(controller);
+            this.clients = new List<TcpClient>();
+            this.ch = new ClientHandler(controller, this.clients);
         }
 
         public void Start()
@@ -36,7 +37,10 @@ namespace ServiceGuiComunication
                     try
                     {
                         TcpClient client = listener.AcceptTcpClient();
-                        this.clients.Add(client);
+                        if (!this.clients.Contains(client))
+                        {
+                            this.clients.Add(client);
+                        }
                         ch.HandleClient(client);
                     }
                     catch (SocketException)
@@ -49,7 +53,7 @@ namespace ServiceGuiComunication
             task.Start();
         }
 
-        public void sendCommandToAllClients(int commandID, string[] args)
+        public void SendCommandToAllClients(int commandID, string[] args)
         {
             JsonCommand command = new JsonCommand(commandID, args, false, ""); //result and jsonData are irrelevant now
             foreach(TcpClient client in this.clients)
@@ -63,6 +67,11 @@ namespace ServiceGuiComunication
                 });
                 task.Start();
             }
+        }
+
+        public void Stop()
+        {
+            this.listener.Stop();
         }
     }
     

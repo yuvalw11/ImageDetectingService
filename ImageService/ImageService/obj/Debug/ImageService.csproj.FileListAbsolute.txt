@@ -59,3 +59,5 @@ C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\N
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\ServiceGuiComunication.dll
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\ServiceGuiComunication.pdb
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\obj\Debug\ImageService.csproj.CopyComplete
+C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\Infrustructure.dll
+C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\bin\Debug\Infrustructure.pdb

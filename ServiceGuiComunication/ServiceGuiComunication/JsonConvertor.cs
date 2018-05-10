@@ -72,5 +72,33 @@ namespace ServiceGuiComunication
 
             return ld;
         }
+
+        public static string ConvertToJson(List<LogData> lds)
+        {
+            JArray logs = new JArray();
+            foreach(LogData ld in lds)
+            {
+                JObject log = new JObject();
+                log["type"] = ld.Type;
+                log["message"] = ld.Message;
+                logs.Add(log);
+            }
+
+            return logs.ToString();
+        }
+
+        public static List<LogData> ConvertToLogDataList(string jarray)
+        {
+            JArray logs = new JArray(jarray);
+            List<LogData> lds = new List<LogData>();
+            foreach(JObject obj in jarray)
+            {
+                LogData data = new LogData();
+                data.Message = (string)obj["message"];
+                data.Type = (int)obj["type"];
+                lds.Add(data);
+            }
+            return lds;
+        }
     }
 }
