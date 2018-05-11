@@ -16,6 +16,7 @@ using ImageService.Modal;
 using ImageService.ImageService.Infrastructure;
 using ImageService.ImageService.Logging;
 using ServiceGuiComunication;
+using Infrustructure;
 
 namespace ImageService
 {
@@ -105,6 +106,11 @@ namespace ImageService
             this.controller = new ImageController(modal, ils);
             this.server = new ImageServer(this.controller, this.ils);
             this.cServer = new ComunicationServer(8000, this.controller);
+            this.ils.MessageRecieved += delegate (object sender, MessageRecievedEventArgs e)
+            {
+                string[] logArgs = { e.Status.ToString(), e.Message };
+                this.cServer.SendCommandToAllClients((int)CommandsEnum.LogCommand, logArgs);
+            };
             this.cServer.Start();
         }
 
@@ -128,7 +134,6 @@ namespace ImageService
         private void OnMsg(object sender, MessageRecievedEventArgs e)
         {
             this.eventLog1.WriteEntry(e.Message);
-            this.ils.AddMessage(new LogInfo((int)e.Status, e.Message));
         }
 
         private void eventLog1_EntryWritten(object sender, EntryWrittenEventArgs e)

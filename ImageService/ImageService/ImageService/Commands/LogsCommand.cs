@@ -10,11 +10,11 @@ using ServiceGuiComunication;
 
 namespace ImageService.ImageService.Commands
 {
-    class LogCommand : ICommand
+    class LogsCommand : ICommand
     {
         private ILoggingService ils;
 
-        public LogCommand(ILoggingService ils)
+        public LogsCommand(ILoggingService ils)
         {
             this.ils = ils;
         }

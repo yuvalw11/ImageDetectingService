@@ -14,33 +14,36 @@ namespace ServiceGuiComunication
     {
         private IPEndPoint ep;
         private TcpClient client;
+        private BinaryReader reader;
+        private BinaryWriter writer;
 
-        public EventHandler<CommandReceivedEventArgs> CommandReceived;
+        public event EventHandler<CommandReceivedEventArgs> CommandReceived;
 
         public ComunicationClient(int port)
         {
             this.ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             this.client = new TcpClient();
+           
         }
 
         public void ConnectToServer()
         {
             client.Connect(ep);
+            NetworkStream stream = client.GetStream();
+            this.reader = new BinaryReader(stream);
+            this.writer = new BinaryWriter(stream);
 
             Task task = new Task(() =>
             {
                 try
                 {
-                    NetworkStream stream = client.GetStream();
-                    BinaryReader reader = new BinaryReader(stream);
-                    BinaryWriter writer = new BinaryWriter(stream);
                     while (true)
                     {
-                        string output = reader.ReadString();
+                        string output = this.reader.ReadString();
                         this.CommandReceived?.Invoke(this, new CommandReceivedEventArgs(JsonConvertor.GenerateJsonCommandObject(output)));
                     }
                 }
-                catch(SocketException)
+                catch(Exception e)
                 {
 
                 }
@@ -48,23 +51,10 @@ namespace ServiceGuiComunication
             task.Start();
         }
 
-        public JsonCommand sendCommand(int commandID, string[] args)
+        public void sendCommand(int commandID, string[] args)
         {
             JsonCommand command = new JsonCommand(commandID, args, false, "");
-            NetworkStream stream = client.GetStream();
-            BinaryReader reader = new BinaryReader(stream);
-            BinaryWriter writer = new BinaryWriter(stream);
-            writer.Write(JsonConvertor.GenerateJsonCommandString(command));
-            try
-            {
-                string result = reader.ReadString();
-                command = JsonConvertor.GenerateJsonCommandObject(result);
-                return command;
-            }
-            catch (SocketException)
-            {
-                return null;
-            }
+            this.writer.Write(JsonConvertor.GenerateJsonCommandString(command));
         }
     }
 }

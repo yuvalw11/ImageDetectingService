@@ -15,13 +15,13 @@ namespace ServiceGuiComunication
         private int port;
         private TcpListener listener;
         private IClientHandler ch;
-        private List<TcpClient> clients;
+        private List<BinaryWriter> writers;
 
         public ComunicationServer(int port, IImageController controller)
         {
             this.port = port;
-            this.clients = new List<TcpClient>();
-            this.ch = new ClientHandler(controller, this.clients);
+            this.writers = new List<BinaryWriter>();
+            this.ch = new ClientHandler(controller, this.writers);
         }
 
         public void Start()
@@ -37,10 +37,6 @@ namespace ServiceGuiComunication
                     try
                     {
                         TcpClient client = listener.AcceptTcpClient();
-                        if (!this.clients.Contains(client))
-                        {
-                            this.clients.Add(client);
-                        }
                         ch.HandleClient(client);
                     }
                     catch (SocketException)
@@ -52,20 +48,13 @@ namespace ServiceGuiComunication
             });
             task.Start();
         }
-
+        
         public void SendCommandToAllClients(int commandID, string[] args)
         {
             JsonCommand command = new JsonCommand(commandID, args, false, ""); //result and jsonData are irrelevant now
-            foreach(TcpClient client in this.clients)
+            foreach(BinaryWriter writer in this.writers)
             {
-                Task task = new Task(() =>
-                {
-                    NetworkStream stream = client.GetStream();
-                    StreamWriter writer = new StreamWriter(stream);
-
-                    writer.Write(JsonConvertor.GenerateJsonCommandString(command));
-                });
-                task.Start();
+                writer.Write(JsonConvertor.GenerateJsonCommandString(command));
             }
         }
 
