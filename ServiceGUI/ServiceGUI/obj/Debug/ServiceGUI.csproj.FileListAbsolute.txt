@@ -18,3 +18,43 @@ C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\ServiceGUI\
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\ServiceGUI\ServiceGUI\obj\Debug\Views\Log.baml
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\ServiceGUI\ServiceGUI\obj\Debug\Views\Log.g.cs
 C:\Users\yuvalw11\Desktop\ImageService\Src\ImageService\ImageService\ServiceGUI\ServiceGUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\bin\Debug\ServiceGUI.exe.config
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\bin\Debug\ServiceGUI.exe
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\bin\Debug\ServiceGUI.pdb
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.csprojResolveAssemblyReference.cache
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\Views\Settings.baml
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\Views\Log.g.cs
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\Views\Settings.g.cs
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\Views\App.g.cs
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI_MarkupCompile.cache
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI_MarkupCompile.lref
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\Views\Log.baml
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\Views\MainWindow.baml
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.g.resources
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.Properties.Resources.resources
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.csproj.GenerateResource.cache
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.csproj.CoreCompileInputs.cache
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.exe
+C:\Users\Eviatar\Downloads\פרויקט תכנות מתקדם 2\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.pdb
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\ServiceGUI.exe.config
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\ServiceGUI.exe
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\ServiceGUI.pdb
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.csprojResolveAssemblyReference.cache
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\Views\Settings.baml
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\Views\Log.g.cs
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\Views\Settings.g.cs
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\Views\App.g.cs
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI_MarkupCompile.cache
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI_MarkupCompile.lref
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\Views\Log.baml
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\Views\MainWindow.baml
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.g.resources
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.Properties.Resources.resources
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.csproj.GenerateResource.cache
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.csproj.CoreCompileInputs.cache
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.exe
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.pdb

@@ -73,6 +73,8 @@
     <Compile Include="DataStructures\DataGridLogLine.cs" />
     <Compile Include="DataStructures\LogLine.cs" />
     <Compile Include="DataStructures\MessageTypeEnum.cs" />
+    <Compile Include="Enums\CommandEnum.cs" />
+    <Compile Include="Events\CommandReceivedEventArgs.cs" />
     <Compile Include="Models\ILogModel.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\SettingsModel.cs" />

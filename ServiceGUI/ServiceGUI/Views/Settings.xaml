@@ -4,12 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="300"
-             d:DesignWidth="300">
-    <StackPanel x:Name="sp">
-        <TextBlock x:Name="textblock1"
-                   Text="example textblock">
-        </TextBlock>
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <StackPanel Width="auto" Height="auto" Background="White">
+        <Grid Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Settings" Width="auto"
+                       FontSize="35" Foreground="Blue" FontFamily="Arial" />
+            <TextBlock x:Name="OutputDir" Grid.Row="1" HorizontalAlignment="Stretch" Text="{Binding OutputDirectory}"
+                       Width="Auto" FontWeight="UltraBold" FontSize="16" FontFamily="Arial" Margin="15,5,10,5" />
+            <TextBlock x:Name="SourceName" Grid.Row="2" HorizontalAlignment="Stretch" Text="{Binding ServiceSourceName}"
+                       Width="Auto" FontWeight="UltraBold" FontSize="16" FontFamily="Arial" Margin="15,5,10,5" />
+            <TextBlock x:Name="LogName" Grid.Row="3" HorizontalAlignment="Stretch" Text="{Binding ServiceLogName}"
+                       Width="Auto" FontWeight="UltraBold" FontSize="16" FontFamily="Arial" Margin="15,5,10,5" />
+            <TextBlock x:Name="ThumbnailSize" Grid.Row="4" HorizontalAlignment="Stretch" Text="{Binding ThumbSize}"
+                       Width="Auto" FontWeight="UltraBold" FontSize="16" FontFamily="Arial" Margin="15,5,10,5" />
+            <StackPanel Grid.Row="5" HorizontalAlignment="Stretch">
+                <Button x:Name="RemoveButton" Content="Remove" HorizontalAlignment="Stretch"
+                        Block.TextAlignment="Center" Command="{Binding RemoveCommand}"
+                        AutomationProperties.AutomationId="RemoveButton"/>
+                <Border>
+                    <ListBox x:Name="Handlers" ItemsSource="{Binding DirectoriesCollection}" 
+                            Margin="5" SelectedItem="{Binding ChosenHandler}" >
+                    </ListBox>
+                </Border>
+            </StackPanel>
+        </Grid>
     </StackPanel>
 
 </UserControl>

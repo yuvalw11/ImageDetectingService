@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 namespace ServiceGUI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Settings.xaml
     /// </summary>
     public partial class Settings
     {
         public Settings()
         {
             InitializeComponent();
+            ViewModels.SettingsViewModel settingsViewModel= new ViewModels.SettingsViewModel();
             this.DataContext = new ViewModels.SettingsViewModel();
         }
     }
