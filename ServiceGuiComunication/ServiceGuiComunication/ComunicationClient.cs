@@ -10,6 +10,7 @@ using ServiceGuiComunication;
 
 namespace ServiceGuiComunication
 {
+    //the class defines a client to connect to a remote server
     public class ComunicationClient
     {
         private IPEndPoint ep;
@@ -17,15 +18,29 @@ namespace ServiceGuiComunication
         private BinaryReader reader;
         private BinaryWriter writer;
 
-        public event EventHandler<CommandReceivedEventArgs> CommandReceived;
+        public event EventHandler<CommandReceivedEventArgs> CommandReceived; // any time the client receives a command the event is invoked.
+        private static ComunicationClient comunicationClient = null; //the only client, ComunicationClient is a songelton
 
-        public ComunicationClient(int port)
+        //get the singelton client
+        public static ComunicationClient GetClient(int port)
+        {
+            if (ComunicationClient.comunicationClient == null)
+            {
+                ComunicationClient.comunicationClient = new ComunicationClient(port);
+            }
+            return ComunicationClient.comunicationClient;
+        }
+
+        //private constructor for client
+        private ComunicationClient(int port)
         {
             this.ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             this.client = new TcpClient();
            
         }
 
+        //the function connects the client to the server
+        //it creates a new thread to receieve commands constently and invoke commandReceived
         public void ConnectToServer()
         {
             client.Connect(ep);
@@ -51,6 +66,7 @@ namespace ServiceGuiComunication
             task.Start();
         }
 
+        //this func sends a command to the server, result will come later in CommandReceived 
         public void sendCommand(int commandID, string[] args)
         {
             JsonCommand command = new JsonCommand(commandID, args, false, "");

@@ -10,6 +10,7 @@ using ServiceGuiComunication;
 
 namespace ImageService.ImageService.Commands
 {
+    //request from the client to get a list of all the logs until now.
     class LogsCommand : ICommand
     {
         private ILoggingService ils;

@@ -53,6 +53,12 @@ namespace ImageService.Server
                 this.m_logging.Log("created handler that listens to " + paths[i], Logging.Modal.MessageTypeEnum.INFO);
             }
         }
+
+        public void closeHandler(string path)
+        {
+            string[] args = { };
+            this.CommandRecieved?.Invoke(this, new CommandRecievedEventArgs((int)CommandsEnum.CloseCommand, args, path));
+        }
         
         //the function closes all the handlers and inform that the server is now closed
         public void  CloseServer()

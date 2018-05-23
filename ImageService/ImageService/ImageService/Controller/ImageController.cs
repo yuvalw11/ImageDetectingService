@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageService.Logging;
+using ImageService.Server;
 
 namespace ImageService.Controller
 {
@@ -23,6 +24,11 @@ namespace ImageService.Controller
             commands.Add((int)CommandsEnum.GetConfigCommand, new GetConfigCommand());
             commands.Add((int)CommandsEnum.LogsCommand, new LogsCommand(ils));
             
+        }
+
+        public void addServer(ImageServer imse)
+        {
+            commands.Add((int)CommandsEnum.RemoveDirCommand, new RemoveDirCommand(imse));
         }
 
         //executes a command and set resultSuccesful if the command was successful or not

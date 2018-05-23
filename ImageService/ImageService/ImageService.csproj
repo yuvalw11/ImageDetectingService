@@ -81,6 +81,7 @@
     <Compile Include="ImageService\Commands\ICommand.cs" />
     <Compile Include="ImageService\Commands\LogsCommand.cs" />
     <Compile Include="ImageService\Commands\NewFileCommand.cs" />
+    <Compile Include="ImageService\Commands\RemoveDirCommand.cs" />
     <Compile Include="ImageService\Controller\Handlers\DirectoyHandler.cs" />
     <Compile Include="ImageService\Controller\Handlers\IDirectoryHandler.cs" />
     <Compile Include="ImageService\Controller\ImageController.cs" />

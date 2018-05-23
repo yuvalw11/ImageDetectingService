@@ -60,12 +60,12 @@ namespace ServiceGUI.ViewModels
 
         public LogViewModel()
         {
-            this.logModel = new LogModel();
+            this.logModel = LogModel.getModel();
             this.LogsTable = new ObservableCollection<DataGridLogLine>();
             this.logModel.PropertyChanged += 
                 delegate (Object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged(e.PropertyName);
-            }; ;
+            }; 
         }
 
     }

@@ -8,6 +8,7 @@ using System.ComponentModel;
 
  class LogModel : ILogModel
 {
+    private static LogModel logModel = null;
     public event PropertyChangedEventHandler PropertyChanged;
     private ObservableCollection<LogLine> logs;
     public ObservableCollection<LogLine> Logs
@@ -20,7 +21,16 @@ using System.ComponentModel;
         }
     }
 
-    public LogModel()
+    public static LogModel getModel()
+    {
+        if(logModel == null)
+        {
+            logModel = new LogModel();
+        }
+        return logModel;
+    }
+
+    private LogModel()
 	{
         this.logs = new ObservableCollection<LogLine>();
         this.logs.CollectionChanged += delegate (object sender, NotifyCollectionChangedEventArgs e) 

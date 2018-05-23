@@ -105,6 +105,7 @@ namespace ImageService
             //creating the controller and the server.
             this.controller = new ImageController(modal, ils);
             this.server = new ImageServer(this.controller, this.ils);
+            this.controller.addServer(this.server);
             this.cServer = new ComunicationServer(8000, this.controller);
             this.ils.MessageRecieved += delegate (object sender, MessageRecievedEventArgs e)
             {
@@ -122,6 +123,7 @@ namespace ImageService
         {
             eventLog1.WriteEntry("In onStop.");
             server.CloseServer();
+            this.cServer.Stop();
             this.ils.MessageRecieved -= this.OnMsg; //removes pointer to OnMsg method
 
         }

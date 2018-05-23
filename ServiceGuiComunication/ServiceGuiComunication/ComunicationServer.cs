@@ -17,6 +17,7 @@ namespace ServiceGuiComunication
         private IClientHandler ch;
         private List<BinaryWriter> writers;
 
+        //c'tor for server
         public ComunicationServer(int port, IImageController controller)
         {
             this.port = port;
@@ -24,12 +25,14 @@ namespace ServiceGuiComunication
             this.ch = new ClientHandler(controller, this.writers);
         }
 
+        //the func starts the server operation
         public void Start()
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             listener = new TcpListener(ep);
             listener.Start();
 
+            //new task to listen to clients
             Task task = new Task(() => 
             {
                 while (true)
@@ -49,6 +52,7 @@ namespace ServiceGuiComunication
             task.Start();
         }
         
+        //the func sends a command to all of the clients it is comunicating with
         public void SendCommandToAllClients(int commandID, string[] args)
         {
             JsonCommand command = new JsonCommand(commandID, args, false, ""); //result and jsonData are irrelevant now
@@ -58,6 +62,7 @@ namespace ServiceGuiComunication
             }
         }
 
+        //stopping the server
         public void Stop()
         {
             this.listener.Stop();

@@ -88,9 +88,9 @@ namespace ServiceGuiComunication
 
         public static List<LogData> ConvertToLogDataList(string jarray)
         {
-            JArray logs = new JArray(jarray);
+            JArray logs = JArray.Parse(jarray);
             List<LogData> lds = new List<LogData>();
-            foreach(JObject obj in jarray)
+            foreach(JObject obj in logs)
             {
                 LogData data = new LogData();
                 data.Message = (string)obj["message"];

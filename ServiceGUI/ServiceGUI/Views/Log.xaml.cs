@@ -27,8 +27,6 @@ namespace ServiceGUI.Views
             ViewModels.LogViewModel logViewModel = new ViewModels.LogViewModel();
             this.logDataGrid.ItemsSource = logViewModel.LogsTable;
             this.DataContext = logViewModel;
-            logViewModel.logModel.Logs.Add(new DataStructures.LogLine(MessageTypeEnum.WARNING, "hello"));
-            logViewModel.logModel.Logs.Add(new DataStructures.LogLine(MessageTypeEnum.FAIL, "hi"));
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

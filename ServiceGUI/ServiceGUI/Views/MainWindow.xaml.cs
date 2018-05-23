@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Infrustructure;
+using ServiceGUI.Commands;
+using ServiceGuiComunication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +27,21 @@ namespace ServiceGUI.Views
         {
             InitializeComponent();
             this.DataContext = new ViewModels.MainWindowViewModel();
+
+            ComunicationClient client = ComunicationClient.GetClient(8000);
+            Controller controller = new Controller(LogModel.getModel(), null);
+            client.ConnectToServer();
+            string[] strs = { };
+            client.CommandReceived += delegate (object senderObj, CommandReceivedEventArgs args)
+            {
+                App.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                {
+                    JsonCommand jCommand = args.JsonCommand;
+                    controller.ExecuteCommand(jCommand.CommandID, jCommand.Args, jCommand.JsonData);
+                });
+            };
+            client.sendCommand((int)CommandsEnum.LogsCommand, strs);
+
         }
     }
 }

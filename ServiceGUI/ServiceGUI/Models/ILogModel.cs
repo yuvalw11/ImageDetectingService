@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 
-interface ILogModel : INotifyPropertyChanged
+ public interface ILogModel : INotifyPropertyChanged
 {
     ObservableCollection<LogLine> Logs 
     {

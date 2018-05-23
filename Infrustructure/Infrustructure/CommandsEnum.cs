@@ -12,7 +12,7 @@ namespace Infrustructure
         GetConfigCommand,
         LogCommand,
         LogsCommand,
-        RemoveClientCommand,
+        RemoveDirCommand,
         CloseCommand
     }
 }

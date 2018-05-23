@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using ServiceGUI.Models;
-using ServiceGUI.Enums;
+using Infrustructure;
 namespace ServiceGUI.ViewModels
 {
     class SettingsViewModel : INotifyPropertyChanged

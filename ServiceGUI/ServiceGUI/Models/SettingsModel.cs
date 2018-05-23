@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
-using ServiceGUI.Enums;
+using Infrustructure;
 using ServiceGUI.Events;
 
 
@@ -105,7 +105,7 @@ namespace ServiceGUI.Models
         public void SendCommandToServer()
         {
             string[] args = { };
-            CommandReceivedEventArgs e = new CommandReceivedEventArgs((int)CommandEnum.GetConfigCommand, args, "Empty");
+            CommandReceivedEventArgs e = new CommandReceivedEventArgs((int)CommandsEnum.GetConfigCommand, args, "Empty");
         }
     }
 }

@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Infrustructure">
+      <HintPath>..\..\Infrustructure\Infrustructure\bin\Debug\Infrustructure.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceGuiComunication">
+      <HintPath>..\..\ServiceGuiComunication\ServiceGuiComunication\bin\Debug\ServiceGuiComunication.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.Composition.Registration" />
@@ -70,12 +76,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Commands\Controller.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\LogCommand.cs" />
+    <Compile Include="Commands\LogsCommand.cs" />
     <Compile Include="DataStructures\DataGridLogLine.cs" />
     <Compile Include="DataStructures\LogLine.cs" />
     <Compile Include="DataStructures\MessageTypeEnum.cs" />
-    <Compile Include="Enums\CommandEnum.cs" />
     <Compile Include="Events\CommandReceivedEventArgs.cs" />
     <Compile Include="Models\ILogModel.cs" />
+    <Compile Include="Models\ISettingModel.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceGUI.DataStructures
 {
-    class LogLine
+    public class LogLine
     {
         private MessageTypeEnum type;
         private string message;
