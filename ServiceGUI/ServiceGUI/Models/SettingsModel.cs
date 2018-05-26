@@ -7,13 +7,14 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Infrustructure;
 using ServiceGUI.Events;
-
+using System.Windows.Data;
 
 namespace ServiceGUI.Models
 {
-    class SettingsModel : INotifyPropertyChanged
+    class SettingsModel : ISettingsModel
     {
         // an event that raises when a property is being changed
+        private static SettingsModel settingsModel = null;
         public event PropertyChangedEventHandler PropertyChanged;
         private string outputDirectory;
         private string sourceName;
@@ -21,17 +22,31 @@ namespace ServiceGUI.Models
         private string thumbnailSize;
         private string chosenHandler;
         private ObservableCollection<string> directoriesCollection;
-        public SettingsModel()
+        private SettingsModel()
         {
             outputDirectory = "Output Directory:";
             sourceName = "Source Name:";
             logName = "Log Name:";
             thumbnailSize = "Thumbnail Size:";
             directoriesCollection = new ObservableCollection<string>();
-            directoriesCollection.Add("Source Folder 1");
-            directoriesCollection.Add("Source Folder 2");
+            Object locker = new object();
+            BindingOperations.EnableCollectionSynchronization(directoriesCollection, locker);
         }
-        protected void OnPropertyChanged(string name)
+
+        public static SettingsModel getModel()
+        {
+            if(settingsModel==null)
+            {
+                settingsModel = new SettingsModel();
+            }
+            return settingsModel;
+        }
+
+        /// <summary>
+        /// Update that the property was changed
+        /// </summary>
+        /// <param name="name">The property that was changed.</param>
+        public void OnPropertyChanged(string name)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
@@ -42,7 +57,7 @@ namespace ServiceGUI.Models
             get { return outputDirectory; }
             set
             {
-                outputDirectory = "Output Directory:" + value;
+                outputDirectory = "OutputDirectory: " + value;
                 OnPropertyChanged("OutputDirectory");
             }
         }
@@ -53,8 +68,8 @@ namespace ServiceGUI.Models
             get { return sourceName; }
             set
             {
-                outputDirectory = "Source Name:" + value;
-                OnPropertyChanged("SourceName");
+                sourceName = "Source Name: " + value;
+                OnPropertyChanged("ServiceSourceName");
             }
         }
 
@@ -64,8 +79,8 @@ namespace ServiceGUI.Models
             get { return logName; }
             set
             {
-                logName = "Log Name:" + value;
-                OnPropertyChanged("LogName");
+                logName = "Log Name: " + value;
+                OnPropertyChanged("ServiceLogName");
             }
         }
 
@@ -75,7 +90,7 @@ namespace ServiceGUI.Models
             get { return thumbnailSize; }
             set
             {
-                outputDirectory = "Thumbnail Size:" + value;
+                thumbnailSize = "Thumbnail Size: " + value;
                 OnPropertyChanged("ThumbSize");
             }
         }
@@ -87,7 +102,7 @@ namespace ServiceGUI.Models
             set
             {
                 chosenHandler = value;
-                OnPropertyChanged("SelectedHandler");
+                OnPropertyChanged("ChosenHandler");
             }
         }
 

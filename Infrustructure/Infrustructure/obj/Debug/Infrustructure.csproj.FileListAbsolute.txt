@@ -4,3 +4,9 @@ C:\Users\yuvalw11\Desktop\ImageService\Src\Infrustructure\Infrustructure\obj\Deb
 C:\Users\yuvalw11\Desktop\ImageService\Src\Infrustructure\Infrustructure\obj\Debug\Infrustructure.csproj.CoreCompileInputs.cache
 C:\Users\yuvalw11\Desktop\ImageService\Src\Infrustructure\Infrustructure\obj\Debug\Infrustructure.dll
 C:\Users\yuvalw11\Desktop\ImageService\Src\Infrustructure\Infrustructure\obj\Debug\Infrustructure.pdb
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\Infrustructure\Infrustructure\bin\Debug\Infrustructure.dll
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\Infrustructure\Infrustructure\bin\Debug\Infrustructure.pdb
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\Infrustructure\Infrustructure\obj\Debug\Infrustructure.csprojResolveAssemblyReference.cache
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\Infrustructure\Infrustructure\obj\Debug\Infrustructure.csproj.CoreCompileInputs.cache
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\Infrustructure\Infrustructure\obj\Debug\Infrustructure.dll
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\Infrustructure\Infrustructure\obj\Debug\Infrustructure.pdb

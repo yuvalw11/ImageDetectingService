@@ -76,10 +76,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Commands\CloseCommand.cs" />
     <Compile Include="Commands\Controller.cs" />
+    <Compile Include="Commands\GetConfigCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\LogCommand.cs" />
     <Compile Include="Commands\LogsCommand.cs" />
+    <Compile Include="Commands\RemoveDirCommand.cs" />
     <Compile Include="DataStructures\DataGridLogLine.cs" />
     <Compile Include="DataStructures\LogLine.cs" />
     <Compile Include="DataStructures\MessageTypeEnum.cs" />

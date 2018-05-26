@@ -12,11 +12,14 @@ namespace ServiceGUI.Commands
     {
         private Dictionary<int, ICommand> commands;
 
-        public Controller(ILogModel logModel, ISettingModel settingModel)
+        public Controller(ILogModel logModel, ISettingsModel settingModel)
         {
             this.commands = new Dictionary<int, ICommand>();
+            this.commands.Add((int)CommandsEnum.GetConfigCommand, new GetConfigCommand(settingModel));
             this.commands.Add((int)CommandsEnum.LogsCommand, new LogsCommand(logModel));
             this.commands.Add((int)CommandsEnum.LogCommand, new LogCommand(logModel));
+            this.commands.Add((int)CommandsEnum.RemoveDirCommand, new RemoveDirCommand(settingModel));
+            this.commands.Add((int)CommandsEnum.CloseCommand, new CloseCommand(settingModel));
         }
 
         public bool ExecuteCommand(int commandID, string[] args, string results)

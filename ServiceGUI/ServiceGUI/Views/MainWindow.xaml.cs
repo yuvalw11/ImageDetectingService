@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServiceGUI.Models;
 
 namespace ServiceGUI.Views
 {
@@ -29,7 +30,7 @@ namespace ServiceGUI.Views
             this.DataContext = new ViewModels.MainWindowViewModel();
 
             ComunicationClient client = ComunicationClient.GetClient(8000);
-            Controller controller = new Controller(LogModel.getModel(), null);
+            Controller controller = new Controller(LogModel.getModel(),SettingsModel.getModel());
             client.ConnectToServer();
             string[] strs = { };
             client.CommandReceived += delegate (object senderObj, CommandReceivedEventArgs args)
@@ -40,7 +41,10 @@ namespace ServiceGUI.Views
                     controller.ExecuteCommand(jCommand.CommandID, jCommand.Args, jCommand.JsonData);
                 });
             };
+            client.sendCommand((int)CommandsEnum.GetConfigCommand, strs);
             client.sendCommand((int)CommandsEnum.LogsCommand, strs);
+            //client.sendCommand((int)CommandsEnum.RemoveDirCommand, strs);
+            //client.sendCommand((int)CommandsEnum.CloseCommand, strs);
 
         }
     }

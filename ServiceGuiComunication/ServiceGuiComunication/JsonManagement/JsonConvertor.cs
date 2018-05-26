@@ -38,7 +38,7 @@ namespace ServiceGuiComunication
 
             return json.ToString();
         }
-        
+
         public static ConfigFileData ConvertToConfigFileData(string json)
         {
             JObject jsonObj = JObject.Parse(json);
@@ -75,7 +75,7 @@ namespace ServiceGuiComunication
         public static string ConvertToJson(List<LogData> lds)
         {
             JArray logs = new JArray();
-            foreach(LogData ld in lds)
+            foreach (LogData ld in lds)
             {
                 JObject log = new JObject();
                 log["type"] = ld.Type;
@@ -90,7 +90,7 @@ namespace ServiceGuiComunication
         {
             JArray logs = JArray.Parse(jarray);
             List<LogData> lds = new List<LogData>();
-            foreach(JObject obj in logs)
+            foreach (JObject obj in logs)
             {
                 LogData data = new LogData();
                 data.Message = (string)obj["message"];

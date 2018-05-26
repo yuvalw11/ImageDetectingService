@@ -14,13 +14,13 @@ namespace ServiceGUI.ViewModels
 {
     class SettingsViewModel : INotifyPropertyChanged
     {
-        private SettingsModel SettingsModel;
+        public ISettingsModel settingsModel;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public SettingsViewModel()
         {
-            SettingsModel = new SettingsModel();
-            SettingsModel.PropertyChanged +=
+            this.settingsModel = SettingsModel.getModel();
+            settingsModel.PropertyChanged +=
                delegate (Object sender, PropertyChangedEventArgs e) {
                    NotifyPropertyChanged(e.PropertyName);
                };
@@ -29,46 +29,46 @@ namespace ServiceGUI.ViewModels
         }
         public string OutputDirectory
         {
-            get { return this.SettingsModel.OutputDirectory; }
+            get { return this.settingsModel.OutputDirectory; }
             set
             {
-                this.SettingsModel.OutputDirectory = value;
+                this.settingsModel.OutputDirectory = value;
             }
         }
 
         public string ServiceSourceName
         {
-            get { return this.SettingsModel.ServiceSourceName; }
+            get { return this.settingsModel.ServiceSourceName; }
             set
             {
-                this.SettingsModel.ServiceSourceName = value;
+                this.settingsModel.ServiceSourceName = value;
             }
         }
 
         public string ServiceLogName
         {
-            get { return this.SettingsModel.ServiceLogName; }
+            get { return this.settingsModel.ServiceLogName; }
             set
             {
-                this.SettingsModel.ServiceLogName = value;
+                this.settingsModel.ServiceLogName = value;
             }
         }
 
         public string ThumbSize
         {
-            get { return this.SettingsModel.ThumbSize; }
+            get { return this.settingsModel.ThumbSize; }
             set
             {
-                this.SettingsModel.ThumbSize = value;
+                this.settingsModel.ThumbSize = value;
             }
         }
 
         public string ChosenHandler
         {
-            get { return this.SettingsModel.ChosenHandler; }
+            get { return this.settingsModel.ChosenHandler; }
             set
             {
-                this.SettingsModel.ChosenHandler = value;
+                this.settingsModel.ChosenHandler = value;
                 //need to add
                 //var command = this.removeHandlerCommand as DelegateCommand<object>;
                 //command.RaiseCanExecuteChanged();
@@ -77,10 +77,10 @@ namespace ServiceGUI.ViewModels
 
         public ObservableCollection<string> DirectoriesCollection
         {
-            get { return this.SettingsModel.DirectoriesCollection; }
+            get { return this.settingsModel.DirectoriesCollection; }
             set
             {
-                this.SettingsModel.DirectoriesCollection = value;
+                this.settingsModel.DirectoriesCollection = value;
             }
         }
 
@@ -88,12 +88,12 @@ namespace ServiceGUI.ViewModels
 
         private void RemoveHandler(object obj)
         {
-            this.SettingsModel.SendCommandToServer();
+            //this.SettingsModel.SendCommandToServer();
         }
         //checks if a chosen handler can be removed 
         private bool CanRemoveHandler(object obj)
         {
-            if (string.IsNullOrEmpty(this.SettingsModel.ChosenHandler))
+            if (string.IsNullOrEmpty(this.settingsModel.ChosenHandler))
             {
                 return false;
             }
@@ -103,8 +103,7 @@ namespace ServiceGUI.ViewModels
 
         protected void NotifyPropertyChanged(string name)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
