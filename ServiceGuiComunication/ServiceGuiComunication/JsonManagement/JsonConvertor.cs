@@ -47,8 +47,15 @@ namespace ServiceGuiComunication
             cfd.SourceDir = (string)jsonObj["sourceDir"];
             cfd.LogName = (string)jsonObj["logName"];
             cfd.ThumnailSize = (int)jsonObj["thumnailSize"];
-            JArray inputDirs = new JArray(jsonObj["outputDir"]);
-            cfd.InputDirs = inputDirs.Select(jv => (string)jv).ToArray();
+            JArray inputDirs = JArray.Parse(jsonObj["inputDirs"].ToString());
+
+
+            cfd.InputDirs = new string[inputDirs.Count];
+            int i = 0;
+            foreach (JValue val in inputDirs)
+            {
+                cfd.InputDirs[i++] = val.ToString();
+            }
 
             return cfd;
         }
