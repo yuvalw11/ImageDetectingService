@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceGuiComunication
 {
+    //struct that contains data about the app config data
     public struct ConfigFileData
     {
         public string OutputDir { get; set; }

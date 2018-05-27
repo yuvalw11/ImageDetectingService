@@ -10,9 +10,10 @@ using Infrustructure;
 
 namespace ServiceGuiComunication
 {
+    //this class is an implementation to IClientHandler, it job is to handle each client connection the server gets
     class ClientHandler : IClientHandler
     {
-        IImageController controller;
+        IImageController controller; 
         List<BinaryWriter> writers;
 
         public ClientHandler(IImageController controller, List<BinaryWriter> writers)
@@ -21,12 +22,14 @@ namespace ServiceGuiComunication
             this.writers = writers;
         }
 
+        //this function is handeling the client
         public void HandleClient(TcpClient client)
         {
             NetworkStream stream = client.GetStream();
             BinaryReader reader = new BinaryReader(stream);
             BinaryWriter writer = new BinaryWriter(stream);
 
+            //creates a new task to listen to the client's requests
             new Task(() =>
             {
                 this.writers.Add(writer);

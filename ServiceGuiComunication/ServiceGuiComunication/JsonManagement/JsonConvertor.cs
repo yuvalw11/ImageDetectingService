@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace ServiceGuiComunication
 {
+    //converts objects to json and vice versa for the data transfer between the server and the clients
     public class JsonConvertor
     {
+        //creates a JsonCommand obj by a string
         public static JsonCommand GenerateJsonCommandObject(string json)
         {
             JObject jsonObj = JObject.Parse(json);
@@ -17,6 +19,7 @@ namespace ServiceGuiComunication
             return jc;
         }
 
+        //creates a string to represent a jsoncommand obj
         public static string GenerateJsonCommandString(JsonCommand jc)
         {
             JObject json = new JObject();
@@ -27,6 +30,7 @@ namespace ServiceGuiComunication
             return json.ToString();
         }
 
+        //converts a string to ConfigFileData obj
         public static string ConvertToJson(ConfigFileData cfd)
         {
             JObject json = new JObject();
@@ -39,6 +43,7 @@ namespace ServiceGuiComunication
             return json.ToString();
         }
 
+        //generates a string representation for a ConfigFileData obj
         public static ConfigFileData ConvertToConfigFileData(string json)
         {
             JObject jsonObj = JObject.Parse(json);
@@ -60,6 +65,7 @@ namespace ServiceGuiComunication
             return cfd;
         }
 
+        //generates a string representation for a LogData obj
         public static string ConvertToJson(LogData ld)
         {
             JObject json = new JObject();
@@ -69,6 +75,7 @@ namespace ServiceGuiComunication
             return json.ToString();
         }
 
+        //converts a string to LogData obj
         public static LogData ConvertToLogData(string json)
         {
             JObject jsonObj = JObject.Parse(json);
@@ -79,6 +86,7 @@ namespace ServiceGuiComunication
             return ld;
         }
 
+        //generates a string representation for a List<LogData> obj
         public static string ConvertToJson(List<LogData> lds)
         {
             JArray logs = new JArray();
@@ -93,6 +101,7 @@ namespace ServiceGuiComunication
             return logs.ToString();
         }
 
+        //converts a string to List<LogData> obj
         public static List<LogData> ConvertToLogDataList(string jarray)
         {
             JArray logs = JArray.Parse(jarray);

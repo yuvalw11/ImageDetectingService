@@ -7,8 +7,10 @@ using System.Net.Sockets;
 
 namespace ServiceGuiComunication
 {
+    //interface for classes that handle clients
     public interface IClientHandler
     {
+        //function to handle the client
         void HandleClient(TcpClient client);
     }
 }
