@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿ServiceGUI
 
 
@@ -18,3 +19,25 @@ Views\Log.xaml;Views\Settings.xaml;Views\MainWindow.xaml;
 
 False
 
+=======
+﻿ServiceGUI
+
+
+winexe
+C#
+.cs
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGUI\ServiceGUI\obj\Debug\
+ServiceGUI
+none
+false
+DEBUG;TRACE
+C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGUI\ServiceGUI\Views\App.xaml
+3391760219
+
+252059201867
+19-1086744618
+Views\Log.xaml;Views\Settings.xaml;Views\MainWindow.xaml;
+
+False
+
+>>>>>>> f245779ce027f92f421f43c757d1428388a5571c
