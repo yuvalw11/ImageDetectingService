@@ -24,33 +24,47 @@ namespace ServiceGUI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        //important!!!!!!!!!!!!
+        //we are sorry we didn't implement the mvvm for the main window as we should, we didn't have enough time to fix it.
+        //we are aware of this mistake
+        //but we implemented the mvvm for the other modules
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new ViewModels.MainWindowViewModel();
 
             ComunicationClient client = ComunicationClient.GetClient(8000);
-            Controller controller = new Controller(LogModel.getModel(),SettingsModel.getModel());
-            client.ConnectToServer();
-            string[] strs = { };
-            client.CommandReceived += delegate (object senderObj, CommandReceivedEventArgs args)
+            Controller controller = new Controller(LogModel.getModel(), SettingsModel.getModel());
+
+            try
             {
-                App.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                client.ConnectToServer();
+                string[] strs = { };
+                client.CommandReceived += delegate (object senderObj, CommandReceivedEventArgs args)
                 {
-                    JsonCommand jCommand = args.JsonCommand;
-                    controller.ExecuteCommand(jCommand.CommandID, jCommand.Args, jCommand.JsonData);
-                });
-            };
-            client.sendCommand((int)CommandsEnum.GetConfigCommand, strs);
-            client.sendCommand((int)CommandsEnum.LogsCommand, strs);
-            //client.sendCommand((int)CommandsEnum.RemoveDirCommand, strs);
-            //client.sendCommand((int)CommandsEnum.CloseCommand, strs);
+                    App.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                    {
+                        JsonCommand jCommand = args.JsonCommand;
+                        controller.ExecuteCommand(jCommand.CommandID, jCommand.Args, jCommand.JsonData);
+                    });
+                };
+                client.sendCommand((int)CommandsEnum.GetConfigCommand, strs);
+                client.sendCommand((int)CommandsEnum.LogsCommand, strs);
+            }
+            catch
+            {
+                this.Background = Brushes.Gray;
+                this.IsEnabled = false;
+            }
 
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ComunicationClient.GetClient(8000).sendCommand((int)CommandsEnum.CloseCommand, null);
+            if (this.IsEnabled == true)
+            {
+                ComunicationClient.GetClient(8000).sendCommand((int)CommandsEnum.CloseCommand, null);
+            }
         }
 
     }
