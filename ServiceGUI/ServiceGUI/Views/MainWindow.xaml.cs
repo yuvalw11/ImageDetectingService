@@ -47,5 +47,11 @@ namespace ServiceGUI.Views
             //client.sendCommand((int)CommandsEnum.CloseCommand, strs);
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ComunicationClient.GetClient(8000).sendCommand((int)CommandsEnum.CloseCommand, null);
+        }
+
     }
 }

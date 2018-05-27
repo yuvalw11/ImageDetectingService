@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-﻿ServiceGUI
-
-
-winexe
-C#
-.cs
-C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\
-ServiceGUI
-none
-false
-DEBUG;TRACE
-C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\Views\App.xaml
-3391760219
-
-252059201867
-761128924825
-Views\Log.xaml;Views\Settings.xaml;Views\MainWindow.xaml;
-
-False
-
-=======
 ﻿ServiceGUI
 
 
@@ -35,9 +13,8 @@ C:\Users\yuvalw11\Desktop\ImageService\Src\ServiceGUI\ServiceGUI\Views\App.xaml
 3391760219
 
 252059201867
-19-1086744618
+76-354096224
 Views\Log.xaml;Views\Settings.xaml;Views\MainWindow.xaml;
 
 False
 
->>>>>>> f245779ce027f92f421f43c757d1428388a5571c

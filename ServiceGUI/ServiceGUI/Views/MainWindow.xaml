@@ -6,6 +6,7 @@
         xmlns:Views="clr-namespace:ServiceGUI.Views"
         xmlns:local="clr-namespace:ServiceGUI"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="402" Margin="10,10,0,0" VerticalAlignment="Top" Width="775">

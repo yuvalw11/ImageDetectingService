@@ -53,11 +53,7 @@ namespace ServiceGuiComunication
             cfd.InputDirs = new string[inputDirs.Count];
             int i = 0;
             foreach (JValue val in inputDirs)
-<<<<<<< HEAD
             {
-=======
-            {
->>>>>>> f245779ce027f92f421f43c757d1428388a5571c
                 cfd.InputDirs[i++] = val.ToString();
             }
 

@@ -1,6 +1,5 @@
 ﻿using Infrustructure;
 using ServiceGUI.Commands;
-using ServiceGuiComunication;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +15,6 @@ namespace ServiceGUI.Views
     /// </summary>
     public partial class App : Application
     {
-      
+        
     }
 }

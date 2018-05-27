@@ -70,13 +70,20 @@ namespace ImageService.Controller.Handlers
             this.m_dirWatchers = new FileSystemWatcher[4]; //defining 4 watcher to each file type
             string[] types = { "*.jpg", "*.bmp", "*.gif", "*.png" };
             //for each type we define a fileSystemWatcher
-            for (int i = 0; i < this.m_dirWatchers.Length; i++)
+            try
             {
-                this.m_dirWatchers[i] = new FileSystemWatcher(this.m_path);
-                this.m_dirWatchers[i].Filter = types[i];
-                this.m_dirWatchers[i].Created += new FileSystemEventHandler(OnChanged); //when a file is added onChanged is called by event Created
-                this.m_dirWatchers[i].EnableRaisingEvents = true;
-                this.m_logging.Log("listens to " + this.m_path + " filter: " + types[i], MessageTypeEnum.INFO); //informing logger
+                for (int i = 0; i < this.m_dirWatchers.Length; i++)
+                {
+                    this.m_dirWatchers[i] = new FileSystemWatcher(this.m_path);
+                    this.m_dirWatchers[i].Filter = types[i];
+                    this.m_dirWatchers[i].Created += new FileSystemEventHandler(OnChanged); //when a file is added onChanged is called by event Created
+                    this.m_dirWatchers[i].EnableRaisingEvents = true;
+                    this.m_logging.Log("listens to " + this.m_path + " filter: " + types[i], MessageTypeEnum.INFO); //informing logger
+                }
+            }
+            catch (Exception e)
+            {
+                this.m_logging.Log("could not handle path " + this.m_path, MessageTypeEnum.FAIL);
             }
         }
 
@@ -110,6 +117,7 @@ namespace ImageService.Controller.Handlers
 
         public void CloseHandler()
         {
+            this.m_logging.Log("closing handler " + this.m_path, MessageTypeEnum.INFO);
             for (int i = 0; i < this.m_dirWatchers.Length; i++)
             {
                 this.m_dirWatchers[i].Dispose();

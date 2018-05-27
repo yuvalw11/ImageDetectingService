@@ -105,6 +105,7 @@ namespace ImageService
             //creating the controller and the server.
             this.controller = new ImageController(modal, ils);
             this.server = new ImageServer(this.controller, this.ils);
+            this.server.Close += OnServerClose;
             this.controller.addServer(this.server);
             this.cServer = new ComunicationServer(8000, this.controller);
             this.ils.MessageRecieved += delegate (object sender, MessageRecievedEventArgs e)
@@ -147,6 +148,13 @@ namespace ImageService
             this.OnStart(args);
             Console.ReadLine();
             this.OnStop();
+        }
+
+        private void OnServerClose(object sender, DirectoryCloseEventArgs e)
+        {
+            string[] args = { e.DirectoryPath };
+            this.cServer.SendCommandToAllClients((int)CommandsEnum.RemoveDirCommand, args);
+
         }
     }
 }

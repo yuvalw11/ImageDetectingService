@@ -29,8 +29,12 @@ namespace ServiceGUI.Commands
         {
             try
             {
+                if (args.Length != 1)
+                {
+                    return false;
+                }
                 //removes from the gui list the handler that was removed.
-                model.DirectoriesCollection.Remove(results);
+                model.DirectoriesCollection.Remove(args[0]);
                 return true;
             }
             catch (Exception e)

@@ -25,7 +25,7 @@ namespace ImageService.Server
 
         #region Properties
         public event EventHandler<CommandRecievedEventArgs> CommandRecieved;          // The event that notifies about a new Command being recieved
-        public event EventHandler<DirectoryCloseEventArgs> close;                     // event to notify the handler that it needs to be closed
+        public event EventHandler<DirectoryCloseEventArgs> Close;                     // event to notify the handler that it needs to be closed
         #endregion
 
         //constructor for ImageServer
@@ -82,6 +82,7 @@ namespace ImageService.Server
             this.CommandRecieved -= closeHandler.OnCommandRecieved; //removes the delegate of the current closed handler
             //informs the current handler has been closed
             this.m_logging.Log("The handler that handles the directory " + e.DirectoryPath + " has been closed", Logging.Modal.MessageTypeEnum.INFO);
+            this.Close?.Invoke(this, e);
         }
     }
 }
