@@ -8,20 +8,28 @@ using System.Collections.ObjectModel;
 using Infrustructure;
 using ServiceGUI.Events;
 using System.Windows.Data;
-
+using ServiceGuiComunication;
 namespace ServiceGUI.Models
 {
+    /// <summary>
+    /// the class is responsible for the logic of the settings window
+    /// </summary>
     class SettingsModel : ISettingsModel
     {
-        // an event that raises when a property is being changed
+
         private static SettingsModel settingsModel = null;
+        // an event that raises when a property is being changed
         public event PropertyChangedEventHandler PropertyChanged;
         private string outputDirectory;
+        ComunicationClient client;
         private string sourceName;
         private string logName;
         private string thumbnailSize;
         private string chosenHandler;
         private ObservableCollection<string> directoriesCollection;
+        /// <summary>
+        /// the constructor
+        /// </summary>
         private SettingsModel()
         {
             outputDirectory = "Output Directory:";
@@ -29,10 +37,12 @@ namespace ServiceGUI.Models
             logName = "Log Name:";
             thumbnailSize = "Thumbnail Size:";
             directoriesCollection = new ObservableCollection<string>();
-            Object locker = new object();
-            BindingOperations.EnableCollectionSynchronization(directoriesCollection, locker);
+            client = ComunicationClient.GetClient(8000);
+            //Object locker = new object();
+            //BindingOperations.EnableCollectionSynchronization(directoriesCollection, locker);
         }
 
+        //singleton
         public static SettingsModel getModel()
         {
             if(settingsModel==null)
@@ -106,6 +116,7 @@ namespace ServiceGUI.Models
             }
         }
 
+        //the directories collection
         public ObservableCollection<string> DirectoriesCollection
         {
             get { return directoriesCollection; }
@@ -116,11 +127,17 @@ namespace ServiceGUI.Models
             }
         }
 
-        //sends commands to the server
-        public void SendCommandToServer()
+        /// <summary>
+        /// sends the command to the server
+        /// <param name="commandEnum"> represents the command</param>
+        /// <param name="handler">the handler to remove</param>
+        /// </summary>
+        public void SendCommandToServer(CommandsEnum commandEnum, string handler)
         {
-            string[] args = { };
-            CommandReceivedEventArgs e = new CommandReceivedEventArgs((int)CommandsEnum.GetConfigCommand, args, "Empty");
+            string[] args = new string[1];
+            args[0] = handler;
+            client.sendCommand((int)CommandsEnum.RemoveDirCommand, args);
+            //CommandReceivedEventArgs e = new CommandReceivedEventArgs((int)CommandsEnum.GetConfigCommand, args, "Empty");
         }
     }
 }

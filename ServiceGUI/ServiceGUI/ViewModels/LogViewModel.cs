@@ -31,7 +31,7 @@ namespace ServiceGUI.ViewModels
                     } 
                     else if (logLine.Type == MessageTypeEnum.INFO)
                     {
-                        color = Brushes.White;
+                        color = Brushes.Green;
                     }
                     else
                     {

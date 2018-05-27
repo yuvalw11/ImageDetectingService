@@ -92,3 +92,11 @@ C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGU
 C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\ServiceGuiComunication.pdb
 C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\obj\Debug\ServiceGUI.csproj.CopyComplete
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Prism.dll
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Prism.Wpf.dll
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Prism.xml
+C:\Users\Eviatar\Downloads\ImageDetectingService\ImageDetectingService\ServiceGUI\ServiceGUI\bin\Debug\Prism.Wpf.xml

@@ -5,12 +5,15 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-
- class LogModel : ILogModel
+/// <summary>
+/// the log model 
+/// </summary>
+class LogModel : ILogModel
 {
     private static LogModel logModel = null;
     public event PropertyChangedEventHandler PropertyChanged;
     private ObservableCollection<LogLine> logs;
+    //the collection of all the log lines
     public ObservableCollection<LogLine> Logs
     {
         get { return this.logs; }
@@ -21,6 +24,7 @@ using System.ComponentModel;
         }
     }
 
+    //singelton
     public static LogModel getModel()
     {
         if(logModel == null)
@@ -29,7 +33,9 @@ using System.ComponentModel;
         }
         return logModel;
     }
-
+    /// <summary>
+    /// the constructor
+    /// </summary>
     private LogModel()
 	{
         this.logs = new ObservableCollection<LogLine>();
@@ -38,7 +44,11 @@ using System.ComponentModel;
             NotifyPropertyChanged(sender, new PropertyChangedEventArgs("logs"));
         };
     }
-
+    /// <summary>
+    /// notifies about properites changes
+    /// <param name="sender">the object sender</param>
+    /// <param name="e"> the event args</param>
+    /// </summary>
     public void NotifyPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
         this.PropertyChanged?.Invoke(sender, e);

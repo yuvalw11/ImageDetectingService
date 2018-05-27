@@ -10,13 +10,22 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using ServiceGUI.Models;
 using Infrustructure;
+using System.Windows.Input;
+using Prism.Commands;
 namespace ServiceGUI.ViewModels
 {
+
+    /// <summary>
+    /// the class for the view model of the GUI settings
+    /// </summary>
     class SettingsViewModel : INotifyPropertyChanged
     {
         public ISettingsModel settingsModel;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// the constructor
+        /// </summary>
         public SettingsViewModel()
         {
             this.settingsModel = SettingsModel.getModel();
@@ -24,9 +33,10 @@ namespace ServiceGUI.ViewModels
                delegate (Object sender, PropertyChangedEventArgs e) {
                    NotifyPropertyChanged(e.PropertyName);
                };
-            //this.removeHandlerCommand = new DelegateCommand<object>(this.removeHandlerCommand, this.CanRemoveHandler);
+            this.RemoveCommand = new DelegateCommand<object>(this.RemoveHandler, this.CanRemoveHandler);
             
         }
+        //the outputdirectory name
         public string OutputDirectory
         {
             get { return this.settingsModel.OutputDirectory; }
@@ -35,7 +45,7 @@ namespace ServiceGUI.ViewModels
                 this.settingsModel.OutputDirectory = value;
             }
         }
-
+        //the source name
         public string ServiceSourceName
         {
             get { return this.settingsModel.ServiceSourceName; }
@@ -44,7 +54,7 @@ namespace ServiceGUI.ViewModels
                 this.settingsModel.ServiceSourceName = value;
             }
         }
-
+        //the log name
         public string ServiceLogName
         {
             get { return this.settingsModel.ServiceLogName; }
@@ -53,7 +63,7 @@ namespace ServiceGUI.ViewModels
                 this.settingsModel.ServiceLogName = value;
             }
         }
-
+        //the thumbnail size
         public string ThumbSize
         {
             get { return this.settingsModel.ThumbSize; }
@@ -62,7 +72,7 @@ namespace ServiceGUI.ViewModels
                 this.settingsModel.ThumbSize = value;
             }
         }
-
+        //the chosen handler
         public string ChosenHandler
         {
             get { return this.settingsModel.ChosenHandler; }
@@ -70,11 +80,11 @@ namespace ServiceGUI.ViewModels
             {
                 this.settingsModel.ChosenHandler = value;
                 //need to add
-                //var command = this.removeHandlerCommand as DelegateCommand<object>;
-                //command.RaiseCanExecuteChanged();
+                var command = this.RemoveCommand as DelegateCommand<object>;
+                command.RaiseCanExecuteChanged();
             }
         }
-
+        //the handlers collection
         public ObservableCollection<string> DirectoriesCollection
         {
             get { return this.settingsModel.DirectoriesCollection; }
@@ -84,11 +94,14 @@ namespace ServiceGUI.ViewModels
             }
         }
 
-        //public ICommand removeHandlerCommand { get; private set; }
-
+        public ICommand RemoveCommand { get; private set; }
+        /// <summary>
+        /// the class is responsible for the logic of the settings window
+        /// </summary>
         private void RemoveHandler(object obj)
         {
-            //this.SettingsModel.SendCommandToServer();
+           // string handler = obj.ToString();
+            this.settingsModel.SendCommandToServer(CommandsEnum.RemoveDirCommand, this.ChosenHandler);
         }
         //checks if a chosen handler can be removed 
         private bool CanRemoveHandler(object obj)
@@ -100,7 +113,10 @@ namespace ServiceGUI.ViewModels
             return true;
         }
 
-
+        /// <summary>
+        /// Notify binded elements that the values have changed.
+        /// </summary>
+        /// <param name="name">The name of the field whose property was changed</param>
         protected void NotifyPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
