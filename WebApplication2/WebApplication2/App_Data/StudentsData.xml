@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<students>
+  <student1>
+    <id>208580613</id>
+    <firstName>Yuval</firstName>
+    <lastName>Weinstein</lastName>
+  </student1>
+
+  <student2>
+    <id>307851808</id>
+    <firstName>Eviatar</firstName>
+    <lastName>Natan</lastName>
+  </student2>
+</students>
