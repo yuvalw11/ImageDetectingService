@@ -21,6 +21,7 @@ namespace ImageService.Server
         private IImageController m_controller;
         private ILoggingService m_logging;
         private IDirectoryHandler[] handlers;
+        private int photosNumber;
         #endregion
 
         #region Properties
@@ -31,6 +32,7 @@ namespace ImageService.Server
         //constructor for ImageServer
         public ImageServer(IImageController controller, ILoggingService logging)
         {
+            this.photosNumber = 0;
             this.m_logging = logging;
             this.m_controller = controller;
             //getting the paths to all directories that need monitoring.
@@ -50,8 +52,13 @@ namespace ImageService.Server
                 CommandRecieved += this.handlers[i].OnCommandRecieved;
                 this.handlers[i].DirectoryClose += new EventHandler<DirectoryCloseEventArgs>(OnCloseServer);
                 this.handlers[i].StartHandleDirectory(paths[i]); //starting the handler (not working - i beleive needs threads)
-                this.m_logging.Log("created handler that listens to " + paths[i], Logging.Modal.MessageTypeEnum.INFO);
+            this.m_logging.Log("created handler that listens to " + paths[i], Logging.Modal.MessageTypeEnum.INFO);
             }
+        }
+
+        public int GetNumberOfPhotos()
+        {
+            return this.photosNumber;
         }
 
         public void closeHandler(string path)

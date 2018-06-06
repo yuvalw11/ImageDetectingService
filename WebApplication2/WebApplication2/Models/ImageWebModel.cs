@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Infrustructure;
+using ServiceGuiComunication;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,10 +8,61 @@ using System.Web;
 using System.Xml.Linq;
 
 namespace WebApplication2.Models
-{ 
+{
 
     public class ImageWebModel
     {
+        public static ImageWebModel model = null;
+
+        public string OutputDir { get; set; }
+        public string SourceDir { get; set; }
+        public string LogName { get; set; }
+        public int ThumnailSize { get; set; }
+        public string[] InputDirs { get; set; }
+        public List<LogData> logs { get; set; }
+
+        public int PhotosNumber
+        {
+            get
+            {
+                if (this.OutputDir == null)
+                {
+                    return 0;
+                }
+                string[] dirs = Directory.GetDirectories(this.OutputDir);
+                int count = 0;
+                foreach (string dir in dirs) 
+                {
+                    int num;
+                    string dirName = Path.GetFileName(dir);
+                    if (int.TryParse(dirName, out num))
+                    {
+                        foreach(string indir in Directory.GetDirectories(dir))
+                        {
+                            count += Directory.GetFiles(indir).Length;
+                        }
+                    }
+                }
+                return count;
+            }
+        }
+
+
+        private ImageWebModel()
+        {
+            
+        }
+
+        public static ImageWebModel GetModel()
+        {
+            if (model == null)
+            {
+                ImageWebModel.model = new ImageWebModel();
+            }
+            return ImageWebModel.model;
+        }
+
+
         public string GetStudentData(string stu, string field)
         {
             var path = HttpContext.Current.Server.MapPath(@"..\\App_Data\\StudentsData.xml");
@@ -19,14 +72,17 @@ namespace WebApplication2.Models
             return student.Element(field).Value;
         }
 
-        public int GetPhotosNumber()
-        {
-            return 0;
-        }
-
         public string GetServiceStatus()
         {
-            return "Inactive";
+            ComunicationClient client = ComunicationClient.GetClient(8000);
+            if (client.isConnected())
+            {
+                return "active";
+            }
+            else
+            {
+                return "inactive";
+            }
         }
     }
 }

@@ -13,6 +13,8 @@ namespace Infrustructure
         LogCommand,
         LogsCommand,
         RemoveDirCommand,
-        CloseCommand
+        CloseCommand,
+        PhotoAddedCommand,
+        photosNumberCommand
     }
 }

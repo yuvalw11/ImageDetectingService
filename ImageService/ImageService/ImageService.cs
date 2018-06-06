@@ -113,6 +113,7 @@ namespace ImageService
                 string[] logArgs = { e.Status.ToString(), e.Message };
                 this.cServer.SendCommandToAllClients((int)CommandsEnum.LogCommand, logArgs);
             };
+           
             this.cServer.Start();
         }
 

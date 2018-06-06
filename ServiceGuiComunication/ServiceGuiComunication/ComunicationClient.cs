@@ -17,6 +17,7 @@ namespace ServiceGuiComunication
         private TcpClient client;
         private BinaryReader reader;
         private BinaryWriter writer;
+        private bool connected;
 
         public event EventHandler<CommandReceivedEventArgs> CommandReceived; // any time the client receives a command the event is invoked.
         private static ComunicationClient comunicationClient = null; //the only client, ComunicationClient is a songelton
@@ -52,18 +53,25 @@ namespace ServiceGuiComunication
             {
                 try
                 {
+                    this.connected = true;
                     while (true)
                     {
                         string output = this.reader.ReadString();
                         this.CommandReceived?.Invoke(this, new CommandReceivedEventArgs(JsonConvertor.GenerateJsonCommandObject(output)));
                     }
+                    
                 }
                 catch(Exception e)
                 {
-
+                    this.connected = false;
                 }
             });
             task.Start();
+        }
+
+        public bool isConnected()
+        {
+            return this.connected;
         }
 
         //this func sends a command to the server, result will come later in CommandReceived 

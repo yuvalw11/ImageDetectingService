@@ -14,7 +14,7 @@ namespace WebApplication2.Controllers
 
         public ImageWebViewController()
         {
-            model = new ImageWebModel();
+            model = ImageWebModel.GetModel();
         }
 
         [HttpGet]
@@ -28,7 +28,7 @@ namespace WebApplication2.Controllers
         {
             JObject data = new JObject();
             data["status"] = this.model.GetServiceStatus();
-            data["imageNum"] = this.model.GetPhotosNumber();
+            data["imageNum"] = this.model.PhotosNumber;
             return data;
         }
 
