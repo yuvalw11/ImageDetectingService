@@ -26,9 +26,16 @@ namespace WebApplication2
                 JsonCommand jCommand = args.JsonCommand;
                 cc.ExecuteCommand(jCommand.CommandID, jCommand.Args, jCommand.JsonData);
             };
-            client.ConnectToServer();
-            client.sendCommand((int)CommandsEnum.GetConfigCommand, null);
-            client.sendCommand((int)CommandsEnum.LogsCommand, null);
+            try
+            {
+                client.ConnectToServer();
+                client.sendCommand((int)CommandsEnum.GetConfigCommand, null);
+                client.sendCommand((int)CommandsEnum.LogsCommand, null);
+            }
+            catch
+            {
+                Console.WriteLine("failed to connect to server");
+            }
         }
     }
 }
