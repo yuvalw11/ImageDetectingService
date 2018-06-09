@@ -193,11 +193,11 @@
     <Compile Include="Commands\CommandsController.cs" />
     <Compile Include="Commands\GetAppConfigCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\ConfigViewController.cs" />
     <Compile Include="Controllers\FirstController.cs" />
     <Compile Include="Controllers\ImageWebViewController.cs" />
-    <Compile Include="Controllers\LogsController.cs" />
-    <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\LogsViewController.cs" />
+    <Compile Include="Controllers\PhotosViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,9 +231,9 @@
     <Content Include="scripts\popper.js.map" />
     <Content Include="scripts\popper-utils.min.js.map" />
     <Content Include="scripts\popper-utils.js.map" />
-    <Content Include="Views\ImageWebView\ConfigView.cshtml" />
-    <Content Include="Views\ImageWebView\PhotosView.cshtml" />
-    <Content Include="Views\ImageWebView\LogsView.cshtml" />
+    <Content Include="Views\ConfigView\ConfigView.cshtml" />
+    <Content Include="Views\PhotosView\PhotosView.cshtml" />
+    <Content Include="Views\LogsView\LogsView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

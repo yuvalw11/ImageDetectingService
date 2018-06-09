@@ -6,11 +6,11 @@ using System.Web.Mvc;
 using WebApplication2.Models;
 namespace WebApplication2.Controllers
 {
-    public class PhotosController: Controller
+    public class PhotosViewController: Controller
     {
         ImageWebModel model;
 
-        public PhotosController()
+        public PhotosViewController()
         {
             model = ImageWebModel.GetModel();
         }

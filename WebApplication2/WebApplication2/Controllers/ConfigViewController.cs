@@ -6,17 +6,17 @@ using System.Web.Mvc;
 using WebApplication2.Models;
 namespace WebApplication2.Controllers
 {
-    public class LogsController: Controller
+    public class ConfigViewController: Controller
     {
         ImageWebModel model;
 
-        public LogsController()
+        public ConfigViewController()
         {
             model = ImageWebModel.GetModel();
         }
 
         [HttpGet]
-        public ActionResult LogsView()
+        public ActionResult ConfigView()
         {
             return View();
         }
