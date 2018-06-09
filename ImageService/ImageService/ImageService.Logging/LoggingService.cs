@@ -1,6 +1,7 @@
 ﻿
 using ImageService.ImageService.Logging;
 using ImageService.Logging.Modal;
+using Infrustructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;

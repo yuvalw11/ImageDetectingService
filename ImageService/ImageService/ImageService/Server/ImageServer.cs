@@ -52,7 +52,7 @@ namespace ImageService.Server
                 CommandRecieved += this.handlers[i].OnCommandRecieved;
                 this.handlers[i].DirectoryClose += new EventHandler<DirectoryCloseEventArgs>(OnCloseServer);
                 this.handlers[i].StartHandleDirectory(paths[i]); //starting the handler (not working - i beleive needs threads)
-            this.m_logging.Log("created handler that listens to " + paths[i], Logging.Modal.MessageTypeEnum.INFO);
+            this.m_logging.Log("created handler that listens to " + paths[i], MessageTypeEnum.INFO);
             }
         }
 
@@ -79,7 +79,7 @@ namespace ImageService.Server
                 this.CommandRecieved?.Invoke(handlers[i], e); //invoke the event in order to inforom the handler that it needs to be closed.
             }
             //after closing all the handlers, informs the log that the server is closed
-            this.m_logging.Log("the server is now closed", Logging.Modal.MessageTypeEnum.INFO);
+            this.m_logging.Log("the server is now closed", MessageTypeEnum.INFO);
         }
 
         //informs the server that the handler has been closed
@@ -88,7 +88,7 @@ namespace ImageService.Server
             IDirectoryHandler closeHandler = (IDirectoryHandler)sender;
             this.CommandRecieved -= closeHandler.OnCommandRecieved; //removes the delegate of the current closed handler
             //informs the current handler has been closed
-            this.m_logging.Log("The handler that handles the directory " + e.DirectoryPath + " has been closed", Logging.Modal.MessageTypeEnum.INFO);
+            this.m_logging.Log("The handler that handles the directory " + e.DirectoryPath + " has been closed", MessageTypeEnum.INFO);
             this.Close?.Invoke(this, e);
         }
     }

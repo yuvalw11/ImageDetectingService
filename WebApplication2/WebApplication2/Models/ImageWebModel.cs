@@ -25,7 +25,7 @@ namespace WebApplication2.Models
         {
             get
             {
-                if (this.OutputDir == null)
+                if (this.OutputDir == null || !Directory.Exists(this.OutputDir))
                 {
                     return 0;
                 }

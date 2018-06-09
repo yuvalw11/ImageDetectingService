@@ -3,6 +3,27 @@
     ViewBag.Title = "Photos";
 }
 <div>
-    <h2>Photos</h2>
-    Example Photos
+    <div class="row">
+        <div class="col-sm-6 col-md-4" id="col">
+            <div class="thumbnail">
+                <img src="..." alt="...">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+     $.getJSON("@Url.Action("GetTumbnailData")", function (data) {
+         var tn = document.createElement("div");
+         tn.className = "thumbnail";
+         tn.id = "tn1";
+         var col = document.getElementById("col");
+         col.appendChild(tn);
+
+    });
+</script>
