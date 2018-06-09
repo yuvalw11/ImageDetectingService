@@ -15,6 +15,8 @@ namespace WebApplication2.Commands
         {
             this.commands = new Dictionary<int, ICommand>();
             this.commands.Add((int)CommandsEnum.GetConfigCommand, new GetAppConfigCommand(model));
+            this.commands.Add((int)CommandsEnum.LogsCommand, new GetLogsCommand(model));
+            this.commands.Add((int)CommandsEnum.LogCommand, new LogCommand(model));
         }
 
         public bool ExecuteCommand(int commandID, string[] args, string results)

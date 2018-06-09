@@ -4,4 +4,34 @@
 }
 
 <h2>Logs</h2>
-Example Logs
+
+<table class="table table-hover" id="logsTable">
+    <tr>
+        <td>Type</td>
+        <td>Message</td>
+    </tr>
+</table>
+
+<script>
+    
+    $.getJSON({
+    url: '/LogsView/getLogs',
+    success: function(data) {
+        
+        var table = document.getElementById("logsTable");
+        for (i = 0; i < data.length; i++) {
+            var row = table.insertRow(i+1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = data[i]["type"];
+            cell2.innerHTML = data[i]["message"];
+        }
+        var $label = $("<label>").text('Date:');
+        $('body').append($label);
+    }
+});
+
+    
+ 
+
+</script>
