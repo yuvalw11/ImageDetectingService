@@ -28,18 +28,29 @@ namespace WebApplication2.Controllers
         {
             JArray data = new JArray();
             string path = this.model.OutputDir + @"\thumbnails";
+            if (!Directory.Exists(path))
+            {
+                return null;
+            }
             string[] dates = Directory.GetDirectories(path);
             for(int i = 0; i < dates.Length; i++)
             {
-                JObject d = new JObject();
-                d["date"] = Path.GetDirectoryName(dates[i]);
-                JArray photos = new JArray();
-                string[] photosUrl = Directory.GetFiles(dates[i]);
-                for(int j = 0; j < photosUrl.Length; j++)
+                string year = Path.GetDirectoryName(dates[i]);
+                string[] months = Directory.GetDirectories(dates[i]);
+                for (int z = 0; z < months.Length; z++)
                 {
-                    photos.Add(photosUrl[j]);
+                    JObject d = new JObject();
+                    d["date"] = Path.GetDirectoryName(months[z]) + "/" + year;
+                    JArray photos = new JArray();
+                    string[] photosUrl = Directory.GetFiles(months[z]);
+                    for (int j = 0; j < photosUrl.Length; j++)
+                    {
+                        photos.Add(photosUrl[j]);
+                    }
+                    d["photos"] = photos;
+                    data.Add(d);
                 }
-                d["photos"] = photos;
+               
             }
             return data;
         }

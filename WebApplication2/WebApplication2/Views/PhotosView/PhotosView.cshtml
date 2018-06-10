@@ -4,26 +4,51 @@
 }
 <div>
     <div class="row">
-        <div class="col-sm-6 col-md-4" id="col">
-            <div class="thumbnail">
-                <img src="..." alt="...">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Delete</a></p>
-                </div>
+        
+        <div class="col-sm-6 col-md-4" id="col1"></div>
+        <div class="col-sm-6 col-md-4" id="col2"></div>
+        <div class="col-sm-6 col-md-4" id="col3"></div>
+        <div class="col-sm-6 col-md-4" id="col4"></div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="thumbnail">
+            <img src="C:/Users/yuvalw11/Desktop/out/thumbnails/2018/6" alt="no">
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-     $.getJSON("@Url.Action("GetTumbnailData")", function (data) {
-         var tn = document.createElement("div");
-         tn.className = "thumbnail";
-         tn.id = "tn1";
-         var col = document.getElementById("col");
-         col.appendChild(tn);
 
+<script>
+    //var t = "<div class=\"thumbnail\">\n<img src = \"...\" alt = \"...\" >\n<div class=\"caption\">\n<h3>Thumbnail label1</h3>\n<p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">View</a> <a href=\"#\" class=\"btn btn-default\" role=\"button\">Delete</a></p>\n</div>\n</div>"
+    //var tn1 = "<div class=\"thumbnail\ id=\"t1\"></div > ";
+    //var cap = "<div class=\"caption\" id=\"cap1\"></div>";
+    //var label = "<h3>hello</h3>"
+    //var button = " <p><a href=\"#\" class=\"btn btn - primary\" role=\"button\">View</a> <a href=\"#\" class=\"btn btn -default \" role=\"button\">Delete</a></p>"
+
+   // $("#col1").append(t);
+    //$("#t1").append(cap);
+   // $("#cap1").append(label);
+   /// $("#cap1").append(button);
+    $.getJSON("@Url.Action("GetTumbnailData")", function (data) {
+        
+        for (i = 0; i < data.length; i++) {
+            date = data[i].date;
+            photos = data[i].photos;
+            for (j = 0; j < photos.length; j++) {
+                src = photos[j]
+                var t = "<div class=\"thumbnail\">\n<img src = \"C:\Users\yuvalw11\Desktop\out\thumbnails\2018\6\dd.jpg\" alt = \"no image\" >\n<div class=\"caption\">\n<h3>Thumbnail label1</h3>\n<p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">View</a> <a href=\"#\" class=\"btn btn-default\" role=\"button\">Delete</a></p>\n</div>\n</div>"
+                $("#col1").append(t);
+            }
+        }
+        
     });
 </script>
