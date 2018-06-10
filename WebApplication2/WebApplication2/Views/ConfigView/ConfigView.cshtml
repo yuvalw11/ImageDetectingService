@@ -1,8 +1,57 @@
-﻿
+﻿@model WebApplication2.Models.ImageWebModel
 @{
     ViewBag.Title = "Config";
 }
 
 <div>
     <h2>Config</h2>
+    <table class="table table-striped">
+            <tr>
+                <td>Output Directory:</td>
+                <td><p type="text" id="OutputDir" size="5"></p> </td>
+            </tr>
+            <tr>
+                <td>Source Name:</td>
+                <td><p type="text" id="SourceName" size="5"></p></td>
+            </tr>
+            <tr>
+                <td>Log Name:</td>
+                <td><p type="text" id="LogName" size="5"></p></td>
+            </tr>
+            <tr>
+                <td>Thumbnail Size:</td>
+                <td><p type="text" id="ThumbSize" size="5"></p></td>
+            </tr>
+    </table>
 </div>
+
+<div>
+    <h3> Handlers</h3>
+    <div>
+        <button type="button" class="btn btn-danger" id="click" size="5"></button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-danger" id="click2" size="5"></button>
+    </div>
+</div>
+<script>
+     $.getJSON("@Url.Action("GetConfig")", function (config) {
+         $("#OutputDir").text(config.OutputDir);
+         $("#SourceName").text(config.SourceName);
+         $("#LogName").text(config.LogName);
+         $("#ThumbSize").text(config.ThumbnailSize);
+
+    });
+
+</script>
+
+<script>
+    $.getJSON("@Url.Action("GetHandlers")", function (handlers) {
+        var table = document.getElementById("handlersTable");
+        for (i = 0; i < handlers.length; i++) {
+            $("#click").text(handlers[0]["Handlers"]);
+            $("#click2").text(handlers[1]["Handlers"]);
+        }
+
+    });
+</script>

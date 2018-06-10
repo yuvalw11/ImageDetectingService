@@ -236,6 +236,9 @@
     <Content Include="Views\ConfigView\ConfigView.cshtml" />
     <Content Include="Views\PhotosView\PhotosView.cshtml" />
     <Content Include="Views\LogsView\LogsView.cshtml" />
+    <Content Include="Views\CloseHandlerView\CloseHandlerView.cshtml" />
+    <Content Include="Views\DeletePhotoView\DeletePhotoView.cshtml" />
+    <Content Include="Views\ViewPhotoView\ViewPhotoView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

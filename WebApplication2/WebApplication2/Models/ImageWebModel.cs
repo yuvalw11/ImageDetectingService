@@ -47,7 +47,6 @@ namespace WebApplication2.Models
             }
         }
 
-
         private ImageWebModel()
         {
             
