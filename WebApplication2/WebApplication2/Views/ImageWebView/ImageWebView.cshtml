@@ -2,39 +2,40 @@
     ViewBag.Title = "ImageWeb";
 }
 
-
-<div>
-    <h2>Image Web</h2>
-
+<body>
     <div>
-        <h2>Data</h2>
-        <p type="text" id="status" size="5"></p>
-        <p type="text" id="photosNumber" size="5"></p>
+        <h2>Image Web</h2>
+
+        <div>
+            <h2>Data</h2>
+            <p type="text" id="status" size="5"></p>
+            <p type="text" id="photosNumber" size="5"></p>
+        </div>
+
+        <table class="table table-striped">
+            <tr>
+                <td>Id  </td>
+                <td>First Name  </td>
+                <td>Last Name  </td>
+            </tr>
+            <tr>
+                <td><p type="text" id="stuAID" size="5"></p></td>
+                <td><p type="text" id="stuAFirstName" size="5"></p></td>
+                <td><p type="text" id="stuALastName" size="5"></p></td>
+            </tr>
+            <tr>
+                <td><p type="text" id="stuBID" size="5"></p></td>
+                <td><p type="text" id="stuBFirstName" size="5"></p></td>
+                <td><p type="text" id="stuBLastName" size="5"></p></td>
+            </tr>
+        </table>
+
     </div>
 
-    <table class="table table-striped">
-        <tr>
-            <td>Id  </td>
-            <td>First Name  </td>
-            <td>Last Name  </td>
-        </tr>
-        <tr>
-            <td><p type="text" id="stuAID" size="5"></p></td>
-            <td><p type="text" id="stuAFirstName" size="5"></p></td>
-            <td><p type="text" id="stuALastName" size="5"></p></td>
-        </tr>
-        <tr>
-            <td><p type="text" id="stuBID" size="5"></p></td>
-            <td><p type="text" id="stuBFirstName" size="5"></p></td>
-            <td><p type="text" id="stuBLastName" size="5"></p></td>
-        </tr>
-    </table>
 
-</div>
+    <script>
 
-
-<script>
-     $.getJSON("@Url.Action("GetServiceData")", function (data) {
+    $.getJSON("@Url.Action("GetServiceData")", function (data) {
          $("#status").text("status: " + data.status);
          $("#photosNumber").text("Amount of photos: " + data.imageNum);
     });
@@ -47,4 +48,5 @@
          $("#stuBFirstName").text(data.students[1].firstName);
          $("#stuBLastName").text(data.students[1].lastName);
         });
-</script>
+    </script>
+</body>

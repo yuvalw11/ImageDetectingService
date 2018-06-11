@@ -17,7 +17,6 @@ namespace WebApplication2.Controllers
             model = ImageWebModel.GetModel();
         }
 
-        [HttpGet]
         public ActionResult PhotosView()
         {
             return View();

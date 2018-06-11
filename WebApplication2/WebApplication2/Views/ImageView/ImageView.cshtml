@@ -25,9 +25,17 @@
     var caption = document.createElement("p");
     caption.innerHTML = date;
 
+    var deleteBtn = document.createElement("a");
+    deleteBtn.setAttribute("href", "/DeletePhotoView/DeletePhotoView?name=" + name + "&date=" + date);
+    deleteBtn.setAttribute("class", "btn btn-primary");
+    deleteBtn.setAttribute("role", "button");
+    deleteBtn.innerHTML = "Delete"
+
     div.appendChild(title);
     div.appendChild(caption);
     div.appendChild(img);
+    div.appendChild(document.createElement("p"));
+    div.appendChild(deleteBtn);
 
 </script>
 
