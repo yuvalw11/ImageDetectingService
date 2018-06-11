@@ -173,7 +173,9 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\LogCommand.cs" />
     <Compile Include="Controllers\ConfigViewController.cs" />
+    <Compile Include="Controllers\DeletePhotoViewController.cs" />
     <Compile Include="Controllers\FirstController.cs" />
+    <Compile Include="Controllers\ImageViewController.cs" />
     <Compile Include="Controllers\ImageWebViewController.cs" />
     <Compile Include="Controllers\LogsViewController.cs" />
     <Compile Include="Controllers\PhotosViewController.cs" />
@@ -205,6 +207,7 @@
     <Content Include="Views\ViewPhotoView\ViewPhotoView.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\ImageView\ImageView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

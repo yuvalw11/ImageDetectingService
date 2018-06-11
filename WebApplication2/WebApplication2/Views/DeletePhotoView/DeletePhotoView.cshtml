@@ -3,5 +3,30 @@
     ViewBag.Title = "DeletePhotoView";
 }
 
-<h2>DeletePhotoView</h2>
+<h2 id="name"></h2>
+<p id="caption"></p>
+<img id="image" height="120" width="120" />
+<a id="delete" class="btn btn-primary" role="button">Delete</a>
 
+<script>
+
+    var url = document.URL;
+    var name = url.split("name=")[1].split("&")[0];
+    var date = url.split("date=")[1];
+    var deleteBtn = document.getElementById("delete");
+    $("#delete").click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "@Url.Action("DeletePhoto", "DeletePhotoView")",
+        data: {
+              name: name, date: date
+        },
+       success: function () {
+           window.history.back();
+           
+       }
+    });
+    });
+    
+    
+</script>

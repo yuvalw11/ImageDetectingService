@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Xml.Linq;
 
@@ -50,6 +51,16 @@ namespace WebApplication2.Models
         private ImageWebModel()
         {
             
+        }
+
+        public void DeletePhoto(string name, string date)
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            string path = this.OutputDir + "/" + date + "/" + name;
+            string thumbPath = this.OutputDir + "/thumbnails/" + date + "/" + name;
+            File.Delete(path);
+            File.Delete(thumbPath);
         }
 
         public static ImageWebModel GetModel()

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ImageView";
+}
+
+
+<div id="div1">
+
+</div>
+
+<script>
+    var url = document.URL;
+    var name = url.split("name=")[1].split("&")[0];
+    var date = url.split("date=")[1];
+    var img = document.createElement("img");
+    var path = "/out/" + date + "/" + name;
+    img.width = 500;
+    img.height = 500;
+    img.src = path;
+    var div = document.getElementById("div1");
+
+    var title = document.createElement("h2");
+    title.innerHTML = name;
+
+    var caption = document.createElement("p");
+    caption.innerHTML = date;
+
+    div.appendChild(title);
+    div.appendChild(caption);
+    div.appendChild(img);
+
+</script>
+
