@@ -162,8 +162,6 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\First\Create.cshtml" />
-    <Content Include="Views\First\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -175,7 +173,6 @@
     <Compile Include="Commands\RemoveDirCommand.cs" />
     <Compile Include="Controllers\ConfigViewController.cs" />
     <Compile Include="Controllers\DeletePhotoViewController.cs" />
-    <Compile Include="Controllers\FirstController.cs" />
     <Compile Include="Controllers\ImageViewController.cs" />
     <Compile Include="Controllers\ImageWebViewController.cs" />
     <Compile Include="Controllers\LogsViewController.cs" />
@@ -184,7 +181,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ImageWebModel.cs" />
-    <Compile Include="Models\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,16 +191,11 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\First\Index.cshtml" />
-    <Content Include="Views\First\Edit.cshtml" />
-    <Content Include="Views\First\Error.cshtml" />
-    <Content Include="Views\First\AjaxView.cshtml" />
     <Content Include="Views\ImageWebView\ImageWebView.cshtml" />
     <Content Include="Views\ConfigView\ConfigView.cshtml" />
     <Content Include="Views\PhotosView\PhotosView.cshtml" />
     <Content Include="Views\LogsView\LogsView.cshtml" />
     <Content Include="Views\DeletePhotoView\DeletePhotoView.cshtml" />
-    <Content Include="Views\ViewPhotoView\ViewPhotoView.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\ImageView\ImageView.cshtml" />

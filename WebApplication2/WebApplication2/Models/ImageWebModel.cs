@@ -2,6 +2,7 @@
 using ServiceGuiComunication;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -65,6 +66,10 @@ namespace WebApplication2.Models
         {
             string path = this.OutputDir + "/" + date + "/" + name;
             string thumbPath = this.OutputDir + "/thumbnails/" + date + "/" + name;
+            Image image = Image.FromFile(path);
+            image.Dispose();
+            Image thumbImage = Image.FromFile(thumbPath);
+            thumbImage.Dispose();
             File.Delete(path);
             File.Delete(thumbPath);
         }

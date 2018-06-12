@@ -36,8 +36,13 @@
     <script>
 
     $.getJSON("@Url.Action("GetServiceData")", function (data) {
-         $("#status").text("status: " + data.status);
-         $("#photosNumber").text("Amount of photos: " + data.imageNum);
+        $("#status").text("status: " + data.status);
+        if (data.status == "inactive") {
+            $("#photosNumber").text("Amount of photos: -");
+        } else {
+            $("#photosNumber").text("Amount of photos: " + data.imageNum);
+        }
+         
     });
 
      $.getJSON("@Url.Action("GetStudentsData")", function (data) {
