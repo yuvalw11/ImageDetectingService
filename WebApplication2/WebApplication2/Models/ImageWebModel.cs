@@ -21,6 +21,7 @@ namespace WebApplication2.Models
         public int ThumnailSize { get; set; }
         public string[] InputDirs { get; set; }
         public List<LogData> logs { get; set; }
+        private ComunicationClient client;
 
         public int PhotosNumber
         {
@@ -50,7 +51,14 @@ namespace WebApplication2.Models
 
         private ImageWebModel()
         {
-            
+            client = ComunicationClient.GetClient(8000);
+        }
+        public void HandlerToDelete(string handler)
+        {
+            string[] args = new string[1];
+            args[0] = handler;
+            client.sendCommand((int)CommandsEnum.RemoveDirCommand, args);
+
         }
 
         public void DeletePhoto(string name, string date)

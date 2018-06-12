@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "HandlerToDeleteView";
+}
+<h2 class="text-center">Handler To Delete</h2>
+
+ <p class="text-center" style="font-size:18px"> Do you want to delete the handler? </p>
+
+<center>
+    <button type="button" id="OK" class="btn-danger" style="margin:50px; width: 192px; height: 108px; font-size:18px">OK</button>
+    <button type="button" id="Cancel" class="btn-primary" style="margin:50px; width: 192px; height: 108px; font-size:18px">Cancel</button>
+</center>
+<script type="text/javascript">
+    document.getElementById("OK").onclick = function () {
+        document.getElementById("Cancel").disabled = true;
+        document.getElementById("OK").disabled = true;
+        location.href = "DeleteHandler";
+    };
+</script>
+
+<script type="text/javascript">
+    document.getElementById("Cancel").onclick = function () {
+        document.getElementById("Cancel").disabled = true;
+        document.getElementById("OK").disabled = true;
+        location.href = "CancelHandlerDeletion";
+    };
+</script>
