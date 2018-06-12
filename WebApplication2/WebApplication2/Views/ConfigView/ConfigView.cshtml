@@ -41,13 +41,15 @@
 </script>
 <script>
     $.getJSON("@Url.Action("GetHandlers")", function (handlers) {
-        for (i = 0; i < handlers.length; i++) {
-            var handler = handlers[i]["Handlers"];
-            deleteUrl = "/ConfigView/HandlerToDeleteView?handler=" + handler;
-            var t = "<div>\n<a href=\"" + deleteUrl + "\" class=\"btn btn-primary\" role=\"button\" >\"" + handler + "\"</a>";
-            handlerToAppend = "#handlers";
-            $(handlerToAppend).append(t);
-        }
+            for (i = 0; i < handlers.length; i++) {
+                var handler = handlers[i]["Handlers"];
+                deleteUrl = "/ConfigView/HandlerToDeleteView?handler=" + handler;
+                var t = "<div>\n<a href=\"" + deleteUrl + "\" class=\"btn btn-primary\" role=\"button\" >\"" + handler + "\"</a>";
+                if (handler !== "") {
+                    handlerToAppend = "#handlers";
+                    $(handlerToAppend).append(t);
+                }
+            }
 
     });
 </script>

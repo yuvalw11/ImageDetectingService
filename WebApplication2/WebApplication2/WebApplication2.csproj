@@ -172,6 +172,7 @@
     <Compile Include="Commands\GetLogsCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\LogCommand.cs" />
+    <Compile Include="Commands\RemoveDirCommand.cs" />
     <Compile Include="Controllers\ConfigViewController.cs" />
     <Compile Include="Controllers\DeletePhotoViewController.cs" />
     <Compile Include="Controllers\FirstController.cs" />
