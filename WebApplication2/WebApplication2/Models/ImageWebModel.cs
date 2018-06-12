@@ -63,8 +63,6 @@ namespace WebApplication2.Models
 
         public void DeletePhoto(string name, string date)
         {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
             string path = this.OutputDir + "/" + date + "/" + name;
             string thumbPath = this.OutputDir + "/thumbnails/" + date + "/" + name;
             File.Delete(path);

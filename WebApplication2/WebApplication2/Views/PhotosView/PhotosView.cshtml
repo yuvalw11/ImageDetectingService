@@ -27,7 +27,7 @@
                 srcThumb = "/out/thumbnails/" + date + "/" + name;
                 viewUrl = "/imageView/imageView?name=" + name + "&date=" + date;
                 deleteUrl = "/DeletePhotoView/DeletePhotoView?name=" + name + "&date=" + date;
-                var t = "<div class=\"img-thumbnail\">\n<img class=\"img-circle\" src=\"" + srcThumb + "\" alt = \"no image\">\n<div class=\"caption\">\n<h3>" + name + "\n</h3><p>" + date + "</p>\n<p><a href=\"" + viewUrl + "\" class=\"btn btn-primary\" role=\"button\">View</a> <a href=\"" + deleteUrl +"\" class=\"btn btn-default\" role=\"button\">Delete</a></p>\n</div>\n</div>"
+                var t = "<div class=\"img-thumbnail\">\n<img class=\"rounded-circle\" src=\"" + srcThumb + "\" alt = \"no image\">\n<div class=\"caption\">\n<h3>" + name + "\n</h3><p>" + date + "</p>\n<p><a href=\"" + viewUrl + "\" class=\"btn btn-primary\" role=\"button\">View</a> <a href=\"" + deleteUrl +"\" class=\"btn btn-danger\" role=\"button\">Delete</a></p>\n</div>\n</div>"
                 colToAppend = "#col" + index % 3;
                 index++;
                 $(colToAppend).append(t);
