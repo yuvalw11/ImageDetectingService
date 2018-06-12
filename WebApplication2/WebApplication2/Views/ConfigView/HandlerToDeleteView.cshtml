@@ -4,24 +4,45 @@
 }
 <h2 class="text-center">Handler To Delete</h2>
 
- <p class="text-center" style="font-size:18px"> Do you want to delete the handler? </p>
+<p class="text-center" id="msg" style="font-size:18px"> Do you want to delete the handler? </p>
 
 <center>
     <button type="button" id="OK" class="btn-danger" style="margin:50px; width: 192px; height: 108px; font-size:18px">OK</button>
     <button type="button" id="Cancel" class="btn-primary" style="margin:50px; width: 192px; height: 108px; font-size:18px">Cancel</button>
 </center>
+<script>
+    url = document.URL;
+    "http://localhost:33438/ConfigView/HandlerToDeleteView?handler=C:\Users\Eviatar\Desktop\in"
+    var handler = url.split("=")[1];
+    document.getElementById("msg").innerHTML = "Are you sure you want to delete " + handler + " ?";
+</script>
 <script type="text/javascript">
-    document.getElementById("OK").onclick = function () {
+    $("#OK").click(function () {
         document.getElementById("Cancel").disabled = true;
         document.getElementById("OK").disabled = true;
-        location.href = "DeleteHandler";
-    };
+        $.ajax({
+        type: 'POST',
+        url: "@Url.Action("DeleteHandler", "ConfigView")",
+        data: {
+            handlerToDelete: handler
+        },
+        success: function () {
+           location.replace("ConfigView");;
+       }
+    });
+    });
 </script>
 
 <script type="text/javascript">
-    document.getElementById("Cancel").onclick = function () {
+    $("#Cancel").click(function () {
         document.getElementById("Cancel").disabled = true;
         document.getElementById("OK").disabled = true;
-        location.href = "CancelHandlerDeletion";
-    };
+        $.ajax({
+        type: 'POST',
+        url: "@Url.Action("CancelHandlerDeletion", "ConfigView")",
+        success: function () {
+           location.replace("ConfigView");;
+       }
+    });
+    });
 </script>

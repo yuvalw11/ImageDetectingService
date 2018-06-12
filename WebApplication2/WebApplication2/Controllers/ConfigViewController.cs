@@ -10,7 +10,6 @@ namespace WebApplication2.Controllers
     public class ConfigViewController : Controller
     {
         ImageWebModel model;
-        string handlerToDelete = null;
         public ConfigViewController()
         {
             model = ImageWebModel.GetModel();
@@ -22,19 +21,15 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult HandlerToDeleteView(string handler)
+        public ActionResult HandlerToDeleteView()
         {
-            this.handlerToDelete = handler;
             return View();
         }
-        [HttpGet]
-        public ActionResult DeleteHandler()
+        public ActionResult DeleteHandler(string handlerToDelete)
         {
-            this.model.HandlerToDelete(this.handlerToDelete);
+            this.model.HandlerToDelete(handlerToDelete);
             return RedirectToAction("ConfigView");
         }
-        [HttpGet]
         public ActionResult CancelHandlerDeletion()
         {
             return RedirectToAction("ConfigView");
