@@ -17,6 +17,7 @@ using ImageService.ImageService.Infrastructure;
 using ImageService.ImageService.Logging;
 using ServiceGuiComunication;
 using Infrustructure;
+using ImageService.ImageService;
 
 namespace ImageService
 {
@@ -115,6 +116,9 @@ namespace ImageService
             };
            
             this.cServer.Start();
+            ITCPHandler tcpClientHandler = new TCPHandler(controller, ils);
+            ITCPServer tcpServer = new TCPServer(8001, ils, tcpClientHandler);
+            tcpServer.Start();
         }
 
         
