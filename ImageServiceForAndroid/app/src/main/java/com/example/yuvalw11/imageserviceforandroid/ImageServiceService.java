@@ -1,5 +1,6 @@
 package com.example.yuvalw11.imageserviceforandroid;
 
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -14,6 +15,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -34,6 +36,8 @@ public class ImageServiceService extends Service {
     private BroadcastReceiver receiver;
     private int SEND_PICTURE_COMMAND = 8;
     private Client client;
+    private int numOfPhotos;
+    private int index;
 
     @Nullable
     @Override
@@ -47,9 +51,38 @@ public class ImageServiceService extends Service {
    }
 
 
+   private synchronized void displayNotofication() {
+        final NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        final int notifyId = 1;
+        final NotificationManager nm =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        builder.setSmallIcon(R.drawable.ic_launcher_background);
+        builder.setContentTitle("transfer");
+        builder.setContentText("transfering images...");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(index != numOfPhotos) {
+                    builder.setProgress(numOfPhotos, index, false);
+                    nm.notify(notifyId, builder.build());
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.out.println("progress bar thread interrupted");
+                    }
+
+                }
+                builder.setProgress(0, 0, false);
+                builder.setContentText("finnished");
+                nm.notify(notifyId, builder.build());
+            }
+        }).start();
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
         final IntentFilter filter = new IntentFilter();
         filter.addAction("android.net.wifi.supplicant.CONNECTION_CHANGE");
         filter.addAction("android.net.wifi.STATE_CHANGE");
@@ -84,13 +117,18 @@ public class ImageServiceService extends Service {
         }
 
         File[] pics = dcim.listFiles();
+        this.index = 0;
+        this.numOfPhotos = pics.length;
+
         if (pics == null) {
             return;
         }
         int count = 0;
 
+        displayNotofication();
         for(File pic : pics) {
             sendPhotosToService(pic);
+            this.index++;
         }
 
     }
