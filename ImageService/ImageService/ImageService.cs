@@ -17,6 +17,7 @@ using ImageService.ImageService.Infrastructure;
 using ImageService.ImageService.Logging;
 using ServiceGuiComunication;
 using Infrustructure;
+using ImageService.ImageService;
 
 namespace ImageService
 {
@@ -51,6 +52,7 @@ namespace ImageService
         ImageController controller;
         ImageServer server;
         ComunicationServer cServer;
+        TCPServer imageServer;
 
 
         [DllImport("advapi32.dll", SetLastError = true)]
@@ -115,6 +117,11 @@ namespace ImageService
             };
            
             this.cServer.Start();
+            ITCPHandler tcpClientHandler = new TCPHandler(controller, ils);
+            ITCPServer tcpServer = new TCPServer(8001, ils, tcpClientHandler);
+            tcpServer.Start();
+            this.imageServer = new TCPServer(8001, ils, new TCPHandler(this.controller, ils));
+            this.imageServer.Start();
         }
 
         

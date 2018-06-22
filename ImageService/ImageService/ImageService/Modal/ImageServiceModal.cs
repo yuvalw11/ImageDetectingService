@@ -57,11 +57,16 @@ namespace ImageService.Modal
 
             try
             {
+                Thread.Sleep(1000);
                 //moving file to the correct dir
                 string imageName = Path.GetFileName(path);
                 DateTime imageDateTime = GetDateTakenFromImage(path);
                 string pathToTransfer = m_OutputFolder + "\\" + imageDateTime.Year + "\\" + imageDateTime.Month;
                 Directory.CreateDirectory(pathToTransfer);
+                if (File.Exists(pathToTransfer + "\\" + Path.GetFileName(path)))
+                {
+                    File.Delete(pathToTransfer + "\\" + Path.GetFileName(path));
+                }
                 File.Move(path, pathToTransfer + "\\" + Path.GetFileName(path));
 
                 //creating thumnail
@@ -69,6 +74,10 @@ namespace ImageService.Modal
                 string pathToTransferThumb = m_OutputFolder + "\\thumbnails\\" + imageDateTime.Year + "\\" + imageDateTime.Month + "\\" + imageName;
                 System.Drawing.Image image = System.Drawing.Image.FromFile(pathToTransfer + "\\" + imageName);
                 System.Drawing.Image thumb = image.GetThumbnailImage(this.m_thumbnailSize, this.m_thumbnailSize, () => false, IntPtr.Zero);
+                if (File.Exists(pathToTransferThumb))
+                {
+                    File.Delete(pathToTransferThumb);
+                }
                 thumb.Save(pathToTransferThumb);
 
                 //success

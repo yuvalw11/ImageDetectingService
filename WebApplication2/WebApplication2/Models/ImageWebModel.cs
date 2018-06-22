@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Web;
 using System.Xml.Linq;
 
@@ -64,14 +65,28 @@ namespace WebApplication2.Models
 
         public void DeletePhoto(string name, string date)
         {
-            string path = this.OutputDir + "/" + date + "/" + name;
-            string thumbPath = this.OutputDir + "/thumbnails/" + date + "/" + name;
-            Image image = Image.FromFile(path);
+            string path = this.OutputDir + "\\" + date + "\\" + name;
+            string thumbPath = this.OutputDir + "\\thumbnails\\" + date + "\\" + name;
+            Image image = Image.FromFile(path.Replace('/','\\'));
             image.Dispose();
-            Image thumbImage = Image.FromFile(thumbPath);
+            Image thumbImage = Image.FromFile(thumbPath.Replace('/', '\\'));
             thumbImage.Dispose();
-            File.Delete(path);
-            File.Delete(thumbPath);
+
+            for (int i = 1; i <= 100; ++i)
+            {
+                try
+                {
+                    File.Delete(path);
+                    File.Delete(thumbPath);
+                    break;
+                }
+                catch (IOException e)
+                {
+                    Thread.Sleep(500);
+                }
+            }
+
+            
         }
 
         public static ImageWebModel GetModel()
