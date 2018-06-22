@@ -103,7 +103,7 @@ public class ImageServiceService extends Service {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bm.compress(Bitmap.CompressFormat.PNG, 70, stream);
             byte[] imgBytes = stream.toByteArray();
-            this.client.sendBytes(createJsonObjToTransfer(imgBytes, pic.getName()));
+            this.client.sendBytes(imgBytes, pic.getName().getBytes());
             return true;
         }
         catch (Exception e) {
@@ -113,7 +113,7 @@ public class ImageServiceService extends Service {
     }
 
 
-    private byte[] createJsonObjToTransfer(byte[] pic, String name) {
+    /*private byte[] createJsonObjToTransfer(byte[] pic, String name) {
         String[] args = new String[2];
         args[0] = name;
         args[1] = new String(pic);
@@ -129,7 +129,7 @@ public class ImageServiceService extends Service {
             Log.e("1", "createJsonObjToTransfer: could not create json");
         }
         return jsonString.getBytes();
-    }
+    }*/
 
 
 }
