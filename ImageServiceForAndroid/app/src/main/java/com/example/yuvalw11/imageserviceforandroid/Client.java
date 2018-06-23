@@ -45,6 +45,10 @@ public class Client{
    public void sendBytes(final byte[] photobytes, final byte[] photoName) throws IOException {
        int a = photoName.length;
        int b = photobytes.length;
+       String imageSize = photobytes.length+"";
+       System.out.println("Size of img is" +photobytes.length);
+       byte [] size = imageSize.getBytes();
+       System.out.println("Size is" +size.length);
        /*ByteArrayOutputStream bos = new ByteArrayOutputStream();
        DataOutputStream dos = new DataOutputStream(bos);
        dos.writeInt(photoName.length);
@@ -77,17 +81,17 @@ public class Client{
                        output.flush();
                        byte[] confirmation = new byte[1];
                        //confirmation check
-                       if (inputStream.read(confirmation) == 1) {
+                       //if (inputStream.read(confirmation) == 1) {
                            //send photo size
                            output.write(photoName);
-                       }
+                       //}
                        output.flush();
                        //co
                        confirmation = new byte[1];
                        //confirmation byte check
-                       if (inputStream.read(confirmation) == 1) {
+                       /*if (inputStream.read(confirmation) == 1) {
                            String a;
-                       }
+                       }*/
                            //sends the photo length.
                            /*ByteBuffer cc = ByteBuffer.allocate(4);
                            cc.order(ByteOrder.LITTLE_ENDIAN);
@@ -100,8 +104,8 @@ public class Client{
                            output.write(photobytes);
                        }
                        output.flush();*/
-                           String imageSize = photobytes.length+"";
-                       System.out.println("Size of img is" +photobytes.length);
+                       String imageSize = photobytes.length+"";
+                       System.out.println("Size of photo is" +photobytes.length);
                        byte [] size = imageSize.getBytes();
                        output.write(size.length);
                        output.flush();

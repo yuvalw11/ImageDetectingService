@@ -37,13 +37,10 @@ namespace ImageService.ImageService
                         {
                             ils.Log("beginning to transfer photos...", MessageTypeEnum.INFO);
                             NetworkStream stream = client.GetStream();
-                            byte[] imgNameSizeBuffer = new byte[1];
+                            byte[] imgNameSizeBuffer = new byte[sizeof(int)];
                             
-                            stream.Read(imgNameSizeBuffer, 0, 1);
-                            /*for (int i=0;i<imgNameSizeBuffer.Length;i++)
-                            {
-                                int a = imgNameSizeBuffer[i];
-                            }*/
+                            stream.Read(imgNameSizeBuffer, 0, sizeof(int));
+
                             int nameSize = BitConverter.ToInt32(imgNameSizeBuffer, 0);
                             if (nameSize == 0)
                             {
@@ -64,10 +61,6 @@ namespace ImageService.ImageService
                             stream.Read(imgSizeBuffer, 0, imgSizesize);
                             int imgSize = BitConverter.ToInt32(imgSizeBuffer, 0);
 
-                            /*for (int i=0; i<imgSizeBuffer.Length;i++)
-                            {
-                                int a = imgSizeBuffer[i];
-                            }*/
 
                             byte[] imgBuffer = new byte[imgSize];
                             stream.Read(imgBuffer, 0, imgSize);
@@ -100,15 +93,5 @@ namespace ImageService.ImageService
             }
         }
 
-        //should read from stream the image name
-        /*private string GetImageName(NetworkStream stream)
-        {
-
-        }
-        //should read from stream the image bytes
-        private List<Byte> GetImageBytes(NetworkStream stream)
-        {
-
-        }*/
     }
 }
