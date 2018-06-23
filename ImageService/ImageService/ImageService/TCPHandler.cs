@@ -41,12 +41,16 @@ namespace ImageService.ImageService
                             
                             
                             stream.Read(imgNameSizeBuffer, 0, sizeof(int));
+                            /*for (int i=0;i<imgNameSizeBuffer.Length;i++)
+                            {
+                                int a = imgNameSizeBuffer[i];
+                            }*/
                             int nameSize = BitConverter.ToInt32(imgNameSizeBuffer, 0);
                             if (nameSize == 0)
                             {
                                 break;
                             }
-
+                            
                             stream.WriteByte(1);
                             stream.Flush();
 
@@ -61,9 +65,12 @@ namespace ImageService.ImageService
                             stream.Read(imgSizeBuffer, 0, sizeof(int));
                             int imgSize = BitConverter.ToInt32(imgSizeBuffer, 0);
 
+                            /*for (int i=0; i<imgSizeBuffer.Length;i++)
+                            {
+                                int a = imgSizeBuffer[i];
+                            }*/
                             stream.WriteByte(1);
                             stream.Flush();
-
                             byte[] imgBuffer = new byte[imgSize];
                             stream.Read(imgBuffer, 0, imgSize);
                             MemoryStream ms = new MemoryStream(imgBuffer);
