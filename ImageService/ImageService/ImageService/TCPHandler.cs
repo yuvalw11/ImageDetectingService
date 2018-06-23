@@ -37,10 +37,9 @@ namespace ImageService.ImageService
                         {
                             ils.Log("beginning to transfer photos...", MessageTypeEnum.INFO);
                             NetworkStream stream = client.GetStream();
-                            byte[] imgNameSizeBuffer = new byte[sizeof(int)];
+                            byte[] imgNameSizeBuffer = new byte[1];
                             
-                            
-                            stream.Read(imgNameSizeBuffer, 0, sizeof(int));
+                            stream.Read(imgNameSizeBuffer, 0, 1);
                             /*for (int i=0;i<imgNameSizeBuffer.Length;i++)
                             {
                                 int a = imgNameSizeBuffer[i];
@@ -51,26 +50,25 @@ namespace ImageService.ImageService
                                 break;
                             }
                             
-                            stream.WriteByte(1);
-                            stream.Flush();
 
                             byte[] imgNameBuffer = new byte[nameSize];
                             stream.Read(imgNameBuffer, 0, nameSize);
                             string imgName = System.Text.Encoding.Default.GetString(imgNameBuffer);
 
-                            stream.WriteByte(1);
-                            stream.Flush();
 
-                            byte[] imgSizeBuffer = new byte[sizeof(int)];
-                            stream.Read(imgSizeBuffer, 0, sizeof(int));
+                            byte[] imgSizesizeBuffer = new byte[1];
+                            stream.Read(imgSizesizeBuffer, 0, 1);
+                            int imgSizesize = BitConverter.ToInt32(imgSizesizeBuffer, 0);
+
+                            byte[] imgSizeBuffer = new byte[imgSizesize];
+                            stream.Read(imgSizeBuffer, 0, imgSizesize);
                             int imgSize = BitConverter.ToInt32(imgSizeBuffer, 0);
 
                             /*for (int i=0; i<imgSizeBuffer.Length;i++)
                             {
                                 int a = imgSizeBuffer[i];
                             }*/
-                            stream.WriteByte(1);
-                            stream.Flush();
+
                             byte[] imgBuffer = new byte[imgSize];
                             stream.Read(imgBuffer, 0, imgSize);
                             MemoryStream ms = new MemoryStream(imgBuffer);
